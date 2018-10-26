@@ -1,0 +1,14 @@
+.block_user_favorites i {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.block_user_favorites i.fa-edit {
+    color: #000;
+    padding: 3px 3px 3px 6px;
+}
+
+.block_user_favorites i.fa-remove {
+    color: #f00;
+    padding: 3px 1px;
+}
