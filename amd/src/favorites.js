@@ -33,6 +33,8 @@ define(['jquery', 'core/ajax', 'core/notification'], function ($, Ajax, Notifica
     let opts = {
         debugjs: true,
         id     : 0,
+        url    : '',
+        hash   : '',
     };
 
     /**
@@ -107,10 +109,10 @@ define(['jquery', 'core/ajax', 'core/notification'], function ($, Ajax, Notifica
                     let request = Ajax.call([{
                         methodname: 'block_user_favorites_set_url',
                         args      : {
-                            hash      : data.hash,
-                            encode_url: data.encode_url,
-                            title     : $('#favorite-url').val(),
-                            blockid   : opts.id,
+                            hash   : data.hash,
+                            url    : data.url,
+                            title  : $('#favorite-url').val(),
+                            blockid: opts.id,
                         }
                     }]);
 
@@ -150,12 +152,14 @@ define(['jquery', 'core/ajax', 'core/notification'], function ($, Ajax, Notifica
             let request = Ajax.call([{
                 methodname: 'block_user_favorites_content',
                 args      : {
+                    url    : opts.url,
                     blockid: opts.id,
                 }
             }]);
 
             request[0].done(function (response) {
                 debug.log(response);
+                $('.block_user_favorites .content').html(response.content);
             }).fail(Notification.exception);
         },
 
@@ -164,23 +168,27 @@ define(['jquery', 'core/ajax', 'core/notification'], function ($, Ajax, Notifica
          */
         init: function () {
 
-            $('#block_user_favorites_set').on('click', function () {
-                debug.log('Set a new favorites');
-                favorites_module.set_url($(this).data(), $('title').text());
-            });
+            $('.block_user_favorites').on('click', '#block_user_favorites_set', function () {
+                // Set current as favorite.
+                favorites_module.set_url({
+                    'hash': opts.hash,
+                    'url' : opts.url
+                }, $('title').text());
 
-            $('#block_user_favorites_delete').on('click', function () {
-                debug.log('Delete a favorites');
-                favorites_module.delete($(this).data());
-            });
+            }).on('click', '#block_user_favorites_delete', function () {
+                // Delete current pages from favorites.
+                favorites_module.delete({
+                    'hash': opts.hash,
+                });
 
-            $('#block_user_favorites-items .fa-remove').on('click', function () {
-                debug.log('Remove a new favorites');
-                favorites_module.delete($(this).parent().data());
-            });
+            }).on('click', '.fa-remove', function () {
+                // Remove a fav in the list.
+                favorites_module.delete($(this).parent().parent().data());
 
-            $('#block_user_favorites-items .fa-edit').on('click', function () {
-                debug.log('Edit a favorites');
+            }).on('click', '.fa-edit', function () {
+                // Edit a fav int the list.
+                let data = $(this).parent().parent().data();
+                favorites_module.set_url(data, $(this).parent().parent().find('a').text());
             });
         }
     };

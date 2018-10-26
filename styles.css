@@ -12,3 +12,11 @@
     color: #f00;
     padding: 3px 1px;
 }
+
+.block_user_favorites a {
+    margin-right: 20px;
+}
+
+.block_user_favorites a.active {
+    font-weight: bold;
+}

@@ -39,14 +39,19 @@ class output_favorites implements renderable, templatable {
      * @var favorites
      */
     protected $favorites;
+    /**
+     * @var string
+     */
+    protected $currenturl;
 
     /**
      * admin_catalog_product_output constructor.
      *
      * @param favorites $favorites
      */
-    public function __construct(favorites $favorites) {
+    public function __construct(favorites $favorites, string $currenturl = '') {
         $this->favorites = $favorites;
+        $this->currenturl = $currenturl;
     }
 
     /**
@@ -60,15 +65,21 @@ class output_favorites implements renderable, templatable {
      * @return \stdClass
      */
     public function export_for_template(renderer_base $output) {
-        global $PAGE;
+        global $PAGE , $CFG;
         $data = [];
-
+        $has_current_url = false;
         if ($this->favorites->has_favorites()) {
 
             $favorites = $this->favorites->get_all();
             foreach ($favorites as $favorite) {
+
+                if ($this->currenturl == $favorite->url) {
+                    $has_current_url = true;
+                }
+
                 $data[$favorite->hash] = [
                     'name' => $favorite->title,
+                    'class' => ($this->currenturl == $favorite->url) ? 'active' : '',
                     'url' => $favorite->url,
                     'hash' => $favorite->hash,
                     'sortorder' => $favorite->sortorder,
@@ -79,9 +90,8 @@ class output_favorites implements renderable, templatable {
         return (object)[
             'data' => new \ArrayIterator($data),
             'has_favorites' => $this->favorites->has_favorites(),
-            'has_current_url' => $this->favorites->has_current_url(),
             'hash' => md5($PAGE->url->out()),
-            'encode_url' => base64_encode($PAGE->url->out()),
+            'has_current_url' => $has_current_url,
         ];
     }
 }

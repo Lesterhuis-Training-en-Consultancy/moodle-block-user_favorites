@@ -130,14 +130,18 @@ class favorites {
     }
 
     /**
-     * Check if current url is set.
+     * Update title.
      *
-     * @return bool|mixed
+     * @param string $hash
+     * @param string $title
+     *
+     * @throws \coding_exception
      */
-    public function has_current_url() {
-        global $PAGE;
-
-        return $this->get(md5($PAGE->url->out()));
+    public function set_title(string $hash, string $title) {
+        if ($this->get($hash)) {
+            $this->favorites[$hash]->title = $title;
+            set_user_preference('user_favorites', serialize($this->favorites));
+        }
     }
 
 }

@@ -113,17 +113,21 @@ class block_user_favorites extends block_base {
             'javascript:set_title',
         ], 'block_user_favorites');
 
+        $url = $PAGE->url->out();
         $PAGE->requires->js_call_amd('block_user_favorites/favorites', 'initialise', [
             [
                 'debugjs' => \block_user_favorites\helper::has_debugging_enabled(),
                 'id' => $this->instance->id,
+                'url' =>  $url,
+                'hash' =>  md5($url), // we could a global config with salt, this way we can make sure there is no bad guy.
             ],
         ]);
 
         $this->content = new stdClass();
         $favorites = new \block_user_favorites\favorites($USER->id);
         $renderer = $PAGE->get_renderer('block_user_favorites');
-        $this->content->text = $renderer->render_favorites(new \block_user_favorites\output\output_favorites($favorites));
+        $this->content->text = $renderer->render_favorites(new \block_user_favorites\output\output_favorites($favorites ,
+            $url));
 
         return $this->content;
     }

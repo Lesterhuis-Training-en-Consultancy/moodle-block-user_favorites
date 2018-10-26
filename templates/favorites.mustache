@@ -22,9 +22,7 @@
 <ol id="block_user_favorites-items" class="list">
     {{#data}}
         <li data-hash="{{hash}}">
-            <a href="{{url}}">
-                {{name}}
-            </a>
+            <a class="{{class}}" href="{{url}}">{{name}}</a>
             <div class="pull-right">
                 <i class="fa fa-edit" title="{{# str}} btn:edit, block_user_favorites {{/ str}}"></i>
                 <i class="fa fa-remove" title="{{# str}} btn:remove, block_user_favorites {{/ str}}"></i>
@@ -35,12 +33,12 @@
 <hr>
 <div class="block_user_favorites-control">
     {{^has_current_url}}
-        <span class="btn btn-default" id="block_user_favorites_set" data-hash="{{hash}}" data-encode_url="{{encode_url}}">
+        <span class="btn btn-default" id="block_user_favorites_set">
             {{# str}} btn:add, block_user_favorites {{/ str}}
         </span>
     {{/has_current_url}}
     {{#has_current_url}}
-        <span class="btn btn-default" id="block_user_favorites_delete" data-hash="{{hash}}" data-encode_url="{{encode_url}}">
+        <span class="btn btn-default" id="block_user_favorites_delete">
             {{# str}} btn:delete, block_user_favorites {{/ str}}
         </span>
     {{/has_current_url}}
