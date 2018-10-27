@@ -15,9 +15,41 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @package moodle-block-user_favorites
-    @copyright 26-10-2018 MoodleFreak.nl
-    @author    Luuk Verhoeven
+    @template block_user_favorites/favorites
+    Template for the favorites.
+
+    Classes required for JS:
+    * none
+
+    Data attributes required for JS:
+    * none
+
+    Context variables required for this template:
+    * hascurrenturl bool If current url is in user favorites
+    * selectedgroup string The initially selected group.
+    * editgroupsettingsdisabled bool Whether to disable the "Edit group settings" button on load.
+    * deletegroupdisabled bool Whether to disable the "Delete selected group" button on load.
+    * addmembersdisabled bool Whether to disable the "Add/remove users" button on load.
+    * data array The list of favorites.
+
+    Example context (json):
+    {
+        "hascurrenturl": false,
+        "data": [
+            {
+                "url": "http://domain.com",
+                "name": "Domain",
+                "hash": "8277e0910d750195b448797616e091ad",
+                "class": "active"
+            },
+            {
+                "url": "http://domain2.com",
+                "name": "Domain2",
+                "hash": "8277e0910d750195b448797616e091ad",
+                "class": ""
+            }
+        ]
+    }
 }}
 <ol id="block_user_favorites-items" class="list">
     {{#data}}

@@ -23,23 +23,26 @@
 
 namespace block_user_favorites\privacy;
 
-defined('MOODLE_INTERNAL') || die();
+use core_privacy\local\metadata\collection;
+use core_privacy\local\request\user_preference_provider;
+
+defined('MOODLE_INTERNAL') || die;
 
 /**
  * Privacy Subsystem for block_user_favorites.
  *
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class provider implements \core_privacy\local\metadata\provider, \core_privacy\local\request\user_preference_provider {
+class provider implements \core_privacy\local\metadata\provider, user_preference_provider {
 
     /**
      * Returns meta-data information about the block_user_favorites.
      *
-     * @param  \core_privacy\local\metadata\collection $collection A collection of meta-data.
+     * @param  collection $collection A collection of meta-data.
      *
-     * @return \core_privacy\local\metadata\collection Return the collection of meta-data.
+     * @return collection Return the collection of meta-data.
      */
-    public static function get_metadata(\core_privacy\local\metadata\collection $collection) : \core_privacy\local\metadata\collection {
+    public static function get_metadata(collection $collection) : collection {
         $collection->add_user_preference('user_favorites', 'privacy:metadata:links');
 
         return $collection;
