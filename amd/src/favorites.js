@@ -30,7 +30,7 @@ define(['jquery', 'core/ajax', 'core/notification'], function ($, Ajax, Notifica
      *
      * @type {{id: number, debugjs: boolean}}
      */
-    let opts = {
+    var opts = {
         debugjs: true,
         id     : 0,
         url    : '',
@@ -41,9 +41,9 @@ define(['jquery', 'core/ajax', 'core/notification'], function ($, Ajax, Notifica
      * Set options base on listed options
      * @param {object} options
      */
-    let set_options = function (options) {
+    var set_options = function (options) {
         "use strict";
-        let key, vartype;
+        var key, vartype;
         for (key in opts) {
             if (opts.hasOwnProperty(key) && options.hasOwnProperty(key)) {
 
@@ -64,17 +64,17 @@ define(['jquery', 'core/ajax', 'core/notification'], function ($, Ajax, Notifica
     /**
      * Console log debug wrapper.
      */
-    let debug = {};
+    var debug = {};
 
     /**
      * Set debug mode
      * Should only be enabled if site is in debug mode.
      * @param {boolean} isenabled
      */
-    let set_debug = function (isenabled) {
+    var set_debug = function (isenabled) {
 
         if (isenabled) {
-            for (let m in console) {
+            for (var m in console) {
                 if (typeof console[m] == 'function') {
                     debug[m] = console[m].bind(window.console);
                 }
@@ -82,7 +82,7 @@ define(['jquery', 'core/ajax', 'core/notification'], function ($, Ajax, Notifica
         } else {
 
             // Fake wrapper.
-            for (let m in console) {
+            for (var m in console) {
                 if (typeof console[m] == 'function') {
                     debug[m] = function () {
                     };
@@ -91,7 +91,7 @@ define(['jquery', 'core/ajax', 'core/notification'], function ($, Ajax, Notifica
         }
     };
 
-    let favorites_module = {
+    var favorites_module = {
 
         /**
          * Add or update a url
@@ -106,7 +106,7 @@ define(['jquery', 'core/ajax', 'core/notification'], function ($, Ajax, Notifica
                 M.util.get_string('javascript:yes', 'block_user_favorites'),
                 M.util.get_string('javascript:no', 'block_user_favorites'), function () {
 
-                    let request = Ajax.call([{
+                    var request = Ajax.call([{
                         methodname: 'block_user_favorites_set_url',
                         args      : {
                             hash   : data.hash,
@@ -130,7 +130,7 @@ define(['jquery', 'core/ajax', 'core/notification'], function ($, Ajax, Notifica
          */
         delete: function (data) {
 
-            let request = Ajax.call([{
+            var request = Ajax.call([{
                 methodname: 'block_user_favorites_delete_url',
                 args      : {
                     hash   : data.hash,
@@ -149,7 +149,7 @@ define(['jquery', 'core/ajax', 'core/notification'], function ($, Ajax, Notifica
          */
         reload: function () {
 
-            let request = Ajax.call([{
+            var request = Ajax.call([{
                 methodname: 'block_user_favorites_content',
                 args      : {
                     url    : opts.url,
@@ -187,7 +187,7 @@ define(['jquery', 'core/ajax', 'core/notification'], function ($, Ajax, Notifica
 
             }).on('click', '.fa-edit', function () {
                 // Edit a fav int the list.
-                let data = $(this).parent().parent().data();
+                var data = $(this).parent().parent().data();
                 favorites_module.set_url(data, $(this).parent().parent().find('a').text());
             });
         }
