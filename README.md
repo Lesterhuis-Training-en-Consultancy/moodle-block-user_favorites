@@ -9,7 +9,7 @@ In brief, the MoodleFreak block `user_favorites` gives the user a method to mark
 * Min. required: Moodle 3.5.x
 * Supports PHP: 7.0 | 7.1 | 7.2 
 
-[![Build Status](https://travis-ci.org/MoodleFreak/moodle-user_favorites.svg?branch=moodle35)](https://travis-ci.org/MoodleFreak/block_user_favorites) 
+[![Build Status](https://travis-ci.org/MoodleFreak/moodle-block-user_favorites.svg?branch=master)](https://travis-ci.org/MoodleFreak/moodle-block-user_favorites) 
 ![Moodle35](https://img.shields.io/badge/moodle-3.5-brightgreen.svg)
 ![PHP7.0](https://img.shields.io/badge/PHP-7.0-brightgreen.svg)
 
