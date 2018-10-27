@@ -13,8 +13,23 @@
     padding: 3px 1px;
 }
 
-.block_user_favorites a {
-    margin-right: 20px;
+.block_user_favorites ol li {
+    overflow: hidden;
+    border-bottom: 1px solid #d1d1d1;
+    padding: 2px 0;
+}
+
+.fa-control {
+    float: right;
+    width: 43px;
+}
+
+.block_user_favorites ol a {
+    text-wrap: normal;
+    word-break: break-all;
+    width: calc(100% - 43px);
+    display: block;
+    float: left;
 }
 
 .block_user_favorites a.active {
