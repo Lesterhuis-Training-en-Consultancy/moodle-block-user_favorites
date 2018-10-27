@@ -48,19 +48,19 @@ class block_user_favorites_external extends external_api {
      * @throws required_capability_exception
      * @throws moodle_exception
      */
-    public static function set_url(string $hash,  string $title, int $blockid , string $url = '') {
+    public static function set_url(string $hash, string $title, int $blockid, string $url = '') {
         global $USER;
 
         require_capability('block/user_favorites:add', context_block::instance($blockid), $USER);
         $favorites = new \block_user_favorites\favorites();
-        if(!empty($url)) {
+        if (!empty($url)) {
 
             if (!filter_var($url, FILTER_VALIDATE_URL) && $hash === md5($url)) {
                 throw new \moodle_exception('Incorrect url.');
             }
 
             $favorites->set_by_url($url, $title);
-        }else{
+        } else {
 
             // Only update title if there is no url provided.
             $favorites->set_title($hash, $title);

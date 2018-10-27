@@ -77,7 +77,7 @@ class favorites {
 
         $hash = md5($url);
 
-        // Check if url in the array
+        // Check if url in the array.
         $this->favorites[$hash] = (object)[
             'url' => $url,
             'title' => $title,

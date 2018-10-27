@@ -22,15 +22,14 @@
 <ol id="block_user_favorites-items" class="list">
     {{#data}}
         <li data-hash="{{hash}}">
-            <a class="{{class}}" href="{{url}}">{{name}}</a>
-            <div class="pull-right">
+            <div class="fa-control">
                 <i class="fa fa-edit" title="{{# str}} btn:edit, block_user_favorites {{/ str}}"></i>
                 <i class="fa fa-remove" title="{{# str}} btn:remove, block_user_favorites {{/ str}}"></i>
             </div>
+            <a class="{{class}}" href="{{url}}">{{name}}</a>
         </li>
     {{/data}}
 </ol>
-<hr>
 <div class="block_user_favorites-control">
     {{^has_current_url}}
         <span class="btn btn-default" id="block_user_favorites_set">

@@ -23,6 +23,7 @@
  * @copyright 26-10-2018 MoodleFreak.com
  * @author    Luuk Verhoeven
  **/
+defined('MOODLE_INTERNAL') || die;
 
 $functions = [
 

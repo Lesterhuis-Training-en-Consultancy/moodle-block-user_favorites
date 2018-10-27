@@ -32,7 +32,7 @@ class block_user_favorites extends block_base {
      *
      * @throws coding_exception
      */
-    function init() {
+    public function init() {
         $this->title = get_string('pluginname', 'block_user_favorites');
     }
 
@@ -42,7 +42,7 @@ class block_user_favorites extends block_base {
      *
      * @return boolean
      */
-    function instance_allow_multiple() {
+    public function instance_allow_multiple() {
         return false;
     }
 
@@ -56,7 +56,7 @@ class block_user_favorites extends block_base {
      *
      * @return boolean
      */
-    function instance_allow_config() {
+    public function instance_allow_config() {
         return true;
     }
 
@@ -65,7 +65,7 @@ class block_user_favorites extends block_base {
      *
      * @return array
      */
-    function applicable_formats() {
+    public function applicable_formats() {
         return ['all' => true];
     }
 
@@ -118,15 +118,16 @@ class block_user_favorites extends block_base {
             [
                 'debugjs' => \block_user_favorites\helper::has_debugging_enabled(),
                 'id' => $this->instance->id,
-                'url' =>  $url,
-                'hash' =>  md5($url), // we could a global config with salt, this way we can make sure there is no bad guy.
+                'url' => $url,
+                'hash' => md5($url),
+                //@TODO We should add a global config with salt, this way we can make sure there is no bad guy.
             ],
         ]);
 
         $this->content = new stdClass();
         $favorites = new \block_user_favorites\favorites($USER->id);
         $renderer = $PAGE->get_renderer('block_user_favorites');
-        $this->content->text = $renderer->render_favorites(new \block_user_favorites\output\output_favorites($favorites ,
+        $this->content->text = $renderer->render_favorites(new \block_user_favorites\output\output_favorites($favorites,
             $url));
 
         return $this->content;

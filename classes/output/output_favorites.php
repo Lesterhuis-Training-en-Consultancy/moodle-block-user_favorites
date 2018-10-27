@@ -65,7 +65,7 @@ class output_favorites implements renderable, templatable {
      * @return \stdClass
      */
     public function export_for_template(renderer_base $output) {
-        global $PAGE , $CFG;
+        global $PAGE;
         $data = [];
         $has_current_url = false;
         if ($this->favorites->has_favorites()) {
