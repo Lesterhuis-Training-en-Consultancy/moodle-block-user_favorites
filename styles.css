@@ -24,12 +24,11 @@
     width: 43px;
 }
 
-.block_user_favorites ol {
+#block_user_favorites-items {
     margin-bottom: 10px;
 }
 
 .block_user_favorites ol a {
-    text-wrap: normal;
     word-break: break-all;
     width: calc(100% - 43px);
     display: block;

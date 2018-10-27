@@ -2,7 +2,6 @@
 
 In brief, the MoodleFreak block `user_favorites` gives the user a method to mark pages as favorite.
  
-## Author
 ![MoodleFreak.com](https://moodlefreak.com/logo_small.png)
 
 * Author: Luuk Verhoeven, [MoodleFreak.com](https://www.moodlefreak.com/)
@@ -13,11 +12,18 @@ In brief, the MoodleFreak block `user_favorites` gives the user a method to mark
 ![Moodle35](https://img.shields.io/badge/moodle-3.5-brightgreen.svg)
 ![PHP7.0](https://img.shields.io/badge/PHP-7.0-brightgreen.svg)
 
+## Screens
+
+![Adding](https://content.screencast.com/users/LuukVerhoeven/folders/Snagit/media/0a62b7d5-c369-453f-9a63-fff5d2c24f9b/10.27.2018-12.40.GIF)
+
 ## List of features
-- @TODO
+- Using external AJAX requests for saving and loading user favorites.
+- Using mustache templates.
+- Fast and easy to work with.
+- Marks current page in favorites if exists. 
 
 ## Installation
-1.  Copy this plugin to the `block\user_favorites` folder on the server
+1.  Copy this plugin to the `blocks\user_favorites` folder on the server
 2.  Login as administrator
 3.  Go to Site Administrator > Notification
 4.  Install the plugin

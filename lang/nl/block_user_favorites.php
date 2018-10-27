@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Lang "EN"
+ * Lang "NL"
  *
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
@@ -24,26 +24,26 @@
  * @author    Luuk Verhoeven
  **/
 
-$string['user_favorites:addinstance'] = 'Add a new block for user favorites';
-$string['user_favorites:myaddinstance'] = 'Add a new Block for user favorites to my moodle';
-$string['pluginname'] = 'User favorites';
-$string['description'] = 'Favorites block where you can set your own favorites';
+$string['user_favorites:addinstance'] = 'Blok gebruikers favorieten toevoegen';
+$string['user_favorites:myaddinstance'] = 'Blok gebruikers favorieten toevoegen aan mijn Moodle';
+$string['pluginname'] = 'Gebruikers favorieten';
+$string['description'] = 'Je eigen favorieten lijst samenstellen.';
 
 // Access.
-$string['user_favorites:add'] = 'Add favorites';
-$string['user_favorites:delete'] = 'Delete favorites';
-$string['user_favorites:view'] = 'View favorites';
+$string['user_favorites:add'] = 'Favoriet toevoegen';
+$string['user_favorites:delete'] = 'Verwijder favoriet';
+$string['user_favorites:view'] = 'Bekijk favoriet';
 
 // Buttons.
-$string['btn:delete'] = 'Delete favorite';
-$string['btn:remove'] = 'Delete favorite';
-$string['btn:add'] = 'Favorite this page';
-$string['btn:edit'] = 'Edit favorite';
+$string['btn:delete'] = 'Verwijder favoriet';
+$string['btn:remove'] = 'Verwijder favoriet';
+$string['btn:add'] = 'Voeg huidige pagina toe aan favorieten';
+$string['btn:edit'] = 'Bewerk favoriet';
 
 // Js.
-$string['javascript:yes'] = 'Save';
-$string['javascript:no'] = 'Cancel';
-$string['javascript:set_title'] = 'Set title of the favorite';
+$string['javascript:yes'] = 'Opslaan';
+$string['javascript:no'] = 'Terug';
+$string['javascript:set_title'] = 'Favoriet hernoemen';
 
 // Privacy provider.
-$string['privacy:metadata:links'] = 'Links stored by the user favorites plugin';
+$string['privacy:metadata:links'] = 'Favorieten opgeslagen door een gebruiker.';
