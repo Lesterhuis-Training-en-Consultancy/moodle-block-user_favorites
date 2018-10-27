@@ -67,14 +67,14 @@ class output_favorites implements renderable, templatable {
     public function export_for_template(renderer_base $output) {
         global $PAGE;
         $data = [];
-        $has_current_url = false;
+        $hascurrenturl = false;
         if ($this->favorites->has_favorites()) {
 
             $favorites = $this->favorites->get_all();
             foreach ($favorites as $favorite) {
 
                 if ($this->currenturl == $favorite->url) {
-                    $has_current_url = true;
+                    $hascurrenturl = true;
                 }
 
                 $data[$favorite->hash] = [
@@ -91,7 +91,7 @@ class output_favorites implements renderable, templatable {
             'data' => new \ArrayIterator($data),
             'has_favorites' => $this->favorites->has_favorites(),
             'hash' => md5($PAGE->url->out()),
-            'has_current_url' => $has_current_url,
+            'hascurrenturl' => $hascurrenturl,
         ];
     }
 }

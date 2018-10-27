@@ -105,7 +105,7 @@ class favorites {
      * @return array|mixed
      */
     public function get_all() {
-        // @TODO maybe ordering on sortorder.
+        // TODO Maybe ordering on sortorder.
         return $this->favorites;
     }
 

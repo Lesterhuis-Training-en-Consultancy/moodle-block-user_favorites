@@ -39,8 +39,7 @@ class provider implements \core_privacy\local\metadata\provider, \core_privacy\l
      *
      * @return \core_privacy\local\metadata\collection Return the collection of meta-data.
      */
-    public static function get_metadata(\core_privacy\local\metadata\collection $collection) :
-    \core_privacy\local\metadata\collection {
+    public static function get_metadata(\core_privacy\local\metadata\collection $collection) : \core_privacy\local\metadata\collection {
         $collection->add_user_preference('user_favorites', 'privacy:metadata:links');
 
         return $collection;

@@ -22,7 +22,8 @@
  * @copyright 2018 MoodleFreak.com
  * @author    Luuk Verhoeven
  **/
-/* eslint no-unused-expressions: "off"  no-console: ["error", { allow: ["warn", "error" , "log"] }] */
+
+/* eslint-disable no-unused-vars, no-unused-expressions,no-console, no-script-url */
 define(['jquery', 'core/ajax', 'core/notification'], function ($, Ajax, Notification) {
 
     /**

@@ -120,7 +120,7 @@ class block_user_favorites extends block_base {
                 'id' => $this->instance->id,
                 'url' => $url,
                 'hash' => md5($url),
-                //@TODO We should add a global config with salt, this way we can make sure there is no bad guy.
+                // TODO We should add a global config with salt, this way we can make sure there is no bad guy.
             ],
         ]);
 

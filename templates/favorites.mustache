@@ -31,14 +31,14 @@
     {{/data}}
 </ol>
 <div class="block_user_favorites-control">
-    {{^has_current_url}}
+    {{^hascurrenturl}}
         <span class="btn btn-default" id="block_user_favorites_set">
             {{# str}} btn:add, block_user_favorites {{/ str}}
         </span>
-    {{/has_current_url}}
-    {{#has_current_url}}
+    {{/hascurrenturl}}
+    {{#hascurrenturl}}
         <span class="btn btn-default" id="block_user_favorites_delete">
             {{# str}} btn:delete, block_user_favorites {{/ str}}
         </span>
-    {{/has_current_url}}
+    {{/hascurrenturl}}
 </div>
