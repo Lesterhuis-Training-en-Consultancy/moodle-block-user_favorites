@@ -113,7 +113,7 @@ class block_user_favorites extends block_base {
             'javascript:set_title',
         ], 'block_user_favorites');
 
-        $url = $PAGE->url->out();
+        $url = $PAGE->url->out(false);
         $PAGE->requires->js_call_amd('block_user_favorites/favorites', 'initialise', [
             [
                 'debugjs' => \block_user_favorites\helper::has_debugging_enabled(),
