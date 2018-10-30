@@ -32,6 +32,7 @@ $capabilities = [
         'captype' => 'write',
         'contextlevel' => CONTEXT_SYSTEM,
         'archetypes' => [
+            'student' => CAP_ALLOW,
             'user' => CAP_ALLOW,
         ],
         'clonepermissionsfrom' => 'moodle/my:manageblocks',
@@ -58,6 +59,7 @@ $capabilities = [
             'editingteacher' => CAP_ALLOW,
             'manager' => CAP_ALLOW,
             'student' => CAP_ALLOW,
+            'user' => CAP_ALLOW,
         ],
     ],
 
@@ -71,6 +73,7 @@ $capabilities = [
             'editingteacher' => CAP_ALLOW,
             'manager' => CAP_ALLOW,
             'student' => CAP_ALLOW,
+            'user' => CAP_ALLOW,
         ],
     ],
 
@@ -84,6 +87,7 @@ $capabilities = [
             'editingteacher' => CAP_ALLOW,
             'manager' => CAP_ALLOW,
             'student' => CAP_ALLOW,
+            'user' => CAP_ALLOW,
         ],
         'clonepermissionsfrom' => 'moodle/site:manageblocks',
     ],
