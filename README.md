@@ -2,9 +2,9 @@
 
 In brief, the MoodleFreak block `user_favorites` gives the user a method to mark pages as favorite.
  
-![MoodleFreak.com](https://moodlefreak.com/logo_small.png)
+![MFreak.nl](https://MFreak.nl/logo_small.png)
 
-* Author: Luuk Verhoeven, [MoodleFreak.com](https://www.moodlefreak.com/)
+* Author: Luuk Verhoeven, [MFreak.nl](https://www.MFreak.nl/)
 * Min. required: Moodle 3.5.x
 * Supports PHP: 7.0 | 7.1 | 7.2 
 
@@ -30,7 +30,7 @@ In brief, the MoodleFreak block `user_favorites` gives the user a method to mark
 
 ## Security
 
-If you discover any security related issues, please email [luuk@moodlefreak.com](mailto:luuk@moodlefreak.com) instead of using the issue tracker.
+If you discover any security related issues, please email [luuk@MFreak.nl](mailto:luuk@MFreak.nl) instead of using the issue tracker.
 
 ## License
 
