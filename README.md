@@ -1,6 +1,6 @@
 ## Moodle block for marking your favorites pages
 
-In brief, the MoodleFreak block `user_favorites` gives the user a method to mark pages as favorite.
+In brief, the MFreak block `user_favorites` gives the user a method to mark pages as favorite.
  
 ![MFreak.nl](https://MFreak.nl/logo_small.png)
 
