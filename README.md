@@ -4,7 +4,7 @@ In brief, the MoodleFreak block `user_favorites` gives the user a method to mark
  
 ![MFreak.nl](https://MFreak.nl/logo_small.png)
 
-* Author: Luuk Verhoeven, [MFreak.nl](https://www.MFreak.nl/)
+* Author: Luuk Verhoeven, [MFreak.nl](https://MFreak.nl/)
 * Min. required: Moodle 3.5.x
 * Supports PHP: 7.0 | 7.1 | 7.2 
 
