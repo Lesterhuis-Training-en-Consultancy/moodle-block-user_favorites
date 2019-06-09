@@ -23,7 +23,7 @@
  * @author    Luuk Verhoeven
  **/
 
-/* eslint-disable no-unused-vars, no-unused-expressions,no-console, no-script-url */
+/* eslint no-unused-expressions: "off", no-console:off, no-invalid-this:"off",no-script-url:"off", block-scoped-var: "off" */
 define(['jquery', 'core/ajax', 'core/notification'], function($, Ajax, Notification) {
 
     /**
@@ -86,6 +86,7 @@ define(['jquery', 'core/ajax', 'core/notification'], function($, Ajax, Notificat
             for (var m in console) {
                 if (typeof console[m] == 'function') {
                     debug[m] = function() {
+                        // Don't do anything.
                     };
                 }
             }
@@ -129,7 +130,7 @@ define(['jquery', 'core/ajax', 'core/notification'], function($, Ajax, Notificat
          *
          * @param {object} data
          */
-        delete: function(data) {
+        remove: function(data) {
 
             var request = Ajax.call([{
                 methodname: 'block_user_favorites_delete_url',
@@ -178,13 +179,13 @@ define(['jquery', 'core/ajax', 'core/notification'], function($, Ajax, Notificat
 
             }).on('click', '#block_user_favorites_delete', function() {
                 // Delete current pages from favorites.
-                favoritesModule.delete({
+                favoritesModule.remove({
                     'hash': opts.hash,
                 });
 
             }).on('click', '.fa-remove', function() {
                 // Remove a fav in the list.
-                favoritesModule.delete(this).parent().parent().data();
+                favoritesModule.remove(this).parent().parent().data();
 
             }).on('click', '.fa-edit', function() {
                 // Edit a fav int the list.
@@ -195,9 +196,10 @@ define(['jquery', 'core/ajax', 'core/notification'], function($, Ajax, Notificat
     };
 
     return {
-
         /**
-         * Init.
+         * Init
+         *
+         * @param {object} args
          */
         initialise: function(args) {
 
