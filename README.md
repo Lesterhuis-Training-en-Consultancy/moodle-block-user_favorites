@@ -1,6 +1,6 @@
-## Moodle block for marking your favorites pages
+## Moodle block for marking your favourite pages as bookmarks
 
-In brief, the MFreak block `user_favorites` gives the user a method to mark pages as favorite.
+In brief, the MFreak block `user_favorites` gives the user a method to mark pages as favourite.
  
 ![MFreak.nl](https://MFreak.nl/logo_small.png)
 
@@ -17,7 +17,7 @@ In brief, the MFreak block `user_favorites` gives the user a method to mark page
 ![Adding](https://content.screencast.com/users/LuukVerhoeven/folders/Snagit/media/0a62b7d5-c369-453f-9a63-fff5d2c24f9b/10.27.2018-12.40.GIF)
 
 ## List of features
-- Using external AJAX requests for saving and loading user favorites.
+- Using external AJAX requests for saving and loading user favourites.
 - Using mustache templates.
 - Fast and easy to work with.
 - Marks current page in favorites if exists. 
