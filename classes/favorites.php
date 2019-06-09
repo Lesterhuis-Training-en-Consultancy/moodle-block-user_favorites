@@ -19,7 +19,7 @@
  *
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
- * @package   moodle-block-user_favorites
+ * @package    block_user_favorites
  * @copyright 26-10-2018 MFreak.nl
  * @author    Luuk Verhoeven
  **/
@@ -31,6 +31,7 @@ defined('MOODLE_INTERNAL') || die;
  * Class favorites
  *
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @copyright 26-10-2018 MFreak.nl
  */
 class favorites {
 
@@ -107,6 +108,8 @@ class favorites {
     }
 
     /**
+     * Get_all favorites.
+     *
      * @return array|mixed
      */
     public function get_all() {

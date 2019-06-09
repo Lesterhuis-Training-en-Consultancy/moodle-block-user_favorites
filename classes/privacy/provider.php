@@ -32,6 +32,7 @@ defined('MOODLE_INTERNAL') || die;
  * Privacy Subsystem for block_user_favorites.
  *
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @copyright 26-10-2018 MFreak.nl
  */
 class provider implements \core_privacy\local\metadata\provider, user_preference_provider {
 

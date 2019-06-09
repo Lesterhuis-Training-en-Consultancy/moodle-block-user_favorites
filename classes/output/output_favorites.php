@@ -15,11 +15,11 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- *
+ * output_favorites
  *
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
- * @package   moodle-block-user_favorites
+ * @package    block_user_favorites
  * @copyright 26-10-2018 MFreak.nl
  * @author    Luuk Verhoeven
  **/
@@ -37,6 +37,7 @@ defined('MOODLE_INTERNAL') || die;
  * Class output_favorites
  *
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @copyright 26-10-2018 MFreak.nl
  */
 class output_favorites implements renderable, templatable {
 
@@ -53,6 +54,7 @@ class output_favorites implements renderable, templatable {
      * admin_catalog_product_output constructor.
      *
      * @param favorites $favorites
+     * @param string    $currenturl
      */
     public function __construct(favorites $favorites, string $currenturl = '') {
         $this->favorites = $favorites;
