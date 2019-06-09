@@ -28,6 +28,17 @@ In brief, the MFreak block `user_favorites` gives the user a method to mark page
 3.  Go to Site Administrator > Notification
 4.  Install the plugin
 
+## Known issues
+We using the `user_preferences` DB table. The max length stored here is a varchar 1333. 
+Because of this, the plugin has a limit in how many favourites a user can store.
+
+### Workaround for this
+```sql
+ALTER TABLE `mdl_user_preferences` 
+MODIFY COLUMN `value` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' AFTER `name`
+```
+[Tracker issue 3](https://github.com/MFreakNL/moodle-block-user_favorites/issues/3)
+
 ## Security
 
 If you discover any security related issues, please email [luuk@MFreak.nl](mailto:luuk@MFreak.nl) instead of using the issue tracker.
