@@ -27,6 +27,11 @@
 namespace block_user_favorites;
 defined('MOODLE_INTERNAL') || die;
 
+/**
+ * Class helper
+ *
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 class helper {
 
     /**

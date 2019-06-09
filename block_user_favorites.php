@@ -25,6 +25,9 @@
  **/
 defined('MOODLE_INTERNAL') || die;
 
+/**
+ * Class block_user_favorites
+ */
 class block_user_favorites extends block_base {
 
     /**

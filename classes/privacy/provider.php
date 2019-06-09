@@ -38,7 +38,7 @@ class provider implements \core_privacy\local\metadata\provider, user_preference
     /**
      * Returns meta-data information about the block_user_favorites.
      *
-     * @param  collection $collection A collection of meta-data.
+     * @param collection $collection A collection of meta-data.
      *
      * @return collection Return the collection of meta-data.
      */
