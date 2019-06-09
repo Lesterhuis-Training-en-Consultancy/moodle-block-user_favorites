@@ -26,7 +26,7 @@
 
 $string['user_favorites:addinstance'] = 'Add a new block for user favourites';
 $string['user_favorites:myaddinstance'] = 'Add a new Block for user favourites to my moodle';
-$string['pluginname'] = 'User favorites';
+$string['pluginname'] = 'User favourites';
 $string['description'] = 'The block favourites allows the user to save there favourite pages';
 
 // Access.
