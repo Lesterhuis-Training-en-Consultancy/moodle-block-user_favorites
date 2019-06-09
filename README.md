@@ -29,8 +29,8 @@ In brief, the MFreak block `user_favorites` gives the user a method to mark page
 4.  Install the plugin
 
 ## Known issues
-We using the `user_preferences` DB table. The max length stored here is a varchar 1333. 
-Because of this, the plugin has a limit in how many favourites a user can store.
+We using the `user_preferences` DB table for storing user favourites. 
+The max length stored here is a varchar 1333. Because of this, the plugin has a limit in how many favourites a user can store.
 
 ### Workaround for this
 ```sql
