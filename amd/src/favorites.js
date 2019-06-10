@@ -83,9 +83,9 @@ define(['jquery', 'core/ajax', 'core/notification'], function($, Ajax, Notificat
         } else {
 
             // Fake wrapper.
-            for (var m in console) {
-                if (typeof console[m] == 'function') {
-                    debug[m] = function() {
+            for (var i in console) {
+                if (typeof console[i] == 'function') {
+                    debug[i] = function() {
                         // Don't do anything.
                     };
                 }
