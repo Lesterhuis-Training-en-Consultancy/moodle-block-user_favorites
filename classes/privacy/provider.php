@@ -66,14 +66,13 @@ class provider implements
      * @return collection Return the collection of meta-data.
      */
     public static function get_metadata(collection $collection) : collection {
-        $collection->link_subsystem('block', 'privacy:metadata:block');
         $collection->add_user_preference('user_favorites', 'privacy:metadata:links');
         $collection->add_database_table('block_user_favorites', [
-            'url' => 'privacy:metadata:attempt:url',
-            'hash' => 'privacy:metadata:attempt:hash',
-            'title' => 'privacy:metadata:attempt:title',
-            'created_at' => 'privacy:metadata:attempt:created_at',
-        ], 'privacy:metadata:attempt');
+            'url' => 'privacy:metadata:favorite:url',
+            'hash' => 'privacy:metadata:favorite:hash',
+            'title' => 'privacy:metadata:favorite:title',
+            'created_at' => 'privacy:metadata:favorite:created_at',
+        ], 'privacy:metadata:favorite');
 
         return $collection;
     }

@@ -47,3 +47,10 @@ $string['javascript:set_title'] = 'Set title of the favourite';
 
 // Privacy provider.
 $string['privacy:metadata:links'] = 'Links stored by the user favourites plugin';
+
+// Privacy provider.
+$string['privacy:metadata:favorite:url'] = 'The url of the favorite link';
+$string['privacy:metadata:favorite:hash'] = 'The hash (identifier) of the favorite link';
+$string['privacy:metadata:favorite:title'] = 'The title of the favorite link';
+$string['privacy:metadata:favorite:created_at'] = 'The timestamp the link is created';
+$string['privacy:metadata:favorite'] = 'Information about the user\'s favorites';

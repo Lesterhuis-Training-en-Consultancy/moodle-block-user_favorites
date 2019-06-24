@@ -17,14 +17,27 @@
 /**
  * Database upgrade scripts
  *
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  * @package    block_user_favorites
- * @copyright 2019-06-24 Mfreak.nl | LdesignMedia.nl - Luuk Verhoeven
- * @author    Luuk Verhoeven
+ * @copyright  2019-06-24 Mfreak.nl | LdesignMedia.nl - Luuk Verhoeven
+ * @author     Luuk Verhoeven
  **/
 
 defined('MOODLE_INTERNAL') || die;
+
+/**
+ * xmldb_block_user_favorites_upgrade
+ *
+ * @param $oldversion
+ *
+ * @return bool
+ * @throws coding_exception
+ * @throws ddl_exception`
+ * @throws dml_exception
+ * @throws downgrade_exception
+ * @throws upgrade_exception
+ */
 function xmldb_block_user_favorites_upgrade($oldversion) {
 
     global $DB;
@@ -60,4 +73,5 @@ function xmldb_block_user_favorites_upgrade($oldversion) {
         upgrade_block_savepoint(true, 2019062400, 'user_favorites');
     }
 
+    return true;
 }

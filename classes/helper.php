@@ -70,6 +70,7 @@ class helper {
 
             $favoriteinstance = new favorites($row->userid);
             array_walk($favorites, [$favoriteinstance, 'update_favorite'], $row->userid);
+
         }
         $rs->close();
     }
