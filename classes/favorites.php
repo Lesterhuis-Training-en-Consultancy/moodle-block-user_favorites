@@ -17,11 +17,11 @@
 /**
  * Adding a new favorites plugin
  *
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  * @package    block_user_favorites
- * @copyright 26-10-2018 MFreak.nl
- * @author    Luuk Verhoeven
+ * @copyright  26-10-2018 MFreak.nl
+ * @author     Luuk Verhoeven
  **/
 
 namespace block_user_favorites;
@@ -31,16 +31,9 @@ defined('MOODLE_INTERNAL') || die;
  * Class favorites
  *
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @copyright 26-10-2018 MFreak.nl
+ * @copyright  26-10-2018 MFreak.nl
  */
 class favorites {
-
-    /**
-     * Set of favorites
-     *
-     * @var array|mixed
-     */
-    protected $favorites = [];
 
     /**
      * @var int
@@ -60,13 +53,42 @@ class favorites {
             $userid = $USER->id;
         }
 
-        $favorites = get_user_preferences('user_favorites', false, $userid);
+        $this->userid = $userid;
+    }
 
-        if ($favorites) {
-            $this->favorites = @unserialize($favorites) ?? [];
+    /**
+     * Insert/update a user favorite
+     *
+     * @param \stdClass $favorite
+     * @param string    $hash
+     * @param int       $userid
+     *
+     * @return int
+     * @throws \dml_exception
+     */
+    public function update_favorite(\stdClass $favorite, string $hash, int $userid) : int {
+        global $DB;
+
+        // Use a single timestamps.
+        static $now;
+        if (empty($now)) {
+            $now = time();
         }
 
-        $this->userid = $userid;
+        $favorite->userid = $userid;
+        $favorite->hash = $hash;
+
+        if (($row = $DB->get_record('block_user_favorites', ['userid' => $userid, 'hash' => $hash])) !== false) {
+            $favorite->id = $row->id;
+            $DB->update_record('block_user_favorites', $favorite);
+
+            return $row->id;
+        }
+
+        // Save timestamp.
+        $favorite->created_at = $now;
+
+        return $DB->insert_record('block_user_favorites', $favorite);
     }
 
     /**
@@ -78,20 +100,18 @@ class favorites {
      * @param int    $sort
      *
      * @throws \coding_exception
+     * @throws \dml_exception
      */
     public function set_by_url(string $url, string $title = '', int $sort = 0) {
-
+        global $USER;
         $hash = md5($url);
 
-        // Check if url in the array.
-        $this->favorites[$hash] = (object)[
+        $this->update_favorite((object)[
             'url' => $url,
             'title' => $title,
             'sortorder' => $sort,
             'hash' => $hash,
-        ];
-
-        set_user_preference('user_favorites', serialize($this->favorites));
+        ], $hash, $USER->id);
     }
 
     /**
@@ -100,41 +120,40 @@ class favorites {
      * @param string $hash
      *
      * @throws \coding_exception
+     * @throws \dml_exception
      */
     public function delete_by_hash(string $hash) {
-        unset($this->favorites[$hash]);
-
-        set_user_preference('user_favorites', serialize($this->favorites));
+        global $DB;
+        $DB->delete_records('block_user_favorites', [
+            'userid' => $this->userid,
+            'hash' => $hash,
+        ]);
     }
 
     /**
      * Get_all favorites.
      *
      * @return array|mixed
+     * @throws \dml_exception
      */
     public function get_all() {
-        // TODO Maybe ordering on sortorder.
-        return $this->favorites;
+        global $DB;
+
+        // TODO ordering on sortorder.
+        return $DB->get_records('block_user_favorites' , ['userid' => $this->userid] , 'title ASC' , '*');
     }
 
     /**
      * Check if it has favorites.
      *
      * @return bool
+     * @throws \dml_exception
      */
     public function has_favorites() : bool {
-        return !empty($this->favorites);
-    }
-
-    /**
-     * Get favorites
-     *
-     * @param string $hash
-     *
-     * @return bool|mixed
-     */
-    public function get(string $hash = '') {
-        return $this->favorites[$hash] ?? false;
+        global $DB;
+        $record = $DB->get_records('block_user_favorites' , ['userid' => $this->userid] , '' , 'id' ,
+            0 , 1) ;
+        return !empty($record);
     }
 
     /**
@@ -144,12 +163,13 @@ class favorites {
      * @param string $title
      *
      * @throws \coding_exception
+     * @throws \dml_exception
      */
     public function set_title(string $hash, string $title) {
-        if ($this->get($hash)) {
-            $this->favorites[$hash]->title = $title;
-            set_user_preference('user_favorites', serialize($this->favorites));
-        }
+
+        $this->update_favorite((object)[
+            'title' => $title,
+        ], $hash, $this->userid);
     }
 
 }
