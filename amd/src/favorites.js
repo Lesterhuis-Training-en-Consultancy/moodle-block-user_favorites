@@ -109,7 +109,7 @@ define(['jquery', 'core/ajax', 'core/notification'], function($, Ajax, Notificat
                 M.util.get_string('javascript:no', 'block_user_favorites'), function() {
 
                     var request = Ajax.call([{
-                        methodname: 'block_user_favorites_setUrl',
+                        methodname: 'block_user_favorites_set_url',
                         args: {
                             hash: data.hash,
                             url: data.url,
@@ -185,7 +185,7 @@ define(['jquery', 'core/ajax', 'core/notification'], function($, Ajax, Notificat
 
             }).on('click', '.fa-remove', function() {
                 // Remove a fav in the list.
-                favoritesModule.remove(this).parent().parent().data();
+                favoritesModule.remove( $(this).closest('li').data());
 
             }).on('click', '.fa-edit', function() {
                 // Edit a fav int the list.
