@@ -4,6 +4,9 @@ language: php
 # https://github.com/moodlerooms/moodle-plugin-ci/issues/70
 sudo: required
 
+services:
+  - mysql
+
 addons:
   firefox: "47.0.1"
   postgresql: "9.3"
