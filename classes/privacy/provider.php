@@ -253,7 +253,7 @@ class provider implements
     private static function get_urls($userid) {
         $favorites = new favorites($userid);
 
-        //Todo convert timestamp to readable format.
+        // Todo convert timestamp to readable format.
         return $favorites->get_all();
     }
 }
