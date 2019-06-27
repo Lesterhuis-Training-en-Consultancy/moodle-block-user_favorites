@@ -29,7 +29,7 @@ defined('MOODLE_INTERNAL') || die;
 /**
  * xmldb_block_user_favorites_upgrade
  *
- * @param $oldversion
+ * @param int $oldversion
  *
  * @return bool
  * @throws coding_exception

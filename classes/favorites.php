@@ -139,8 +139,8 @@ class favorites {
     public function get_all() {
         global $DB;
 
-        // TODO ordering on sortorder.
-        return $DB->get_records('block_user_favorites' , ['userid' => $this->userid] , 'title ASC' , '*');
+        // Todo ordering on sortorder.
+        return $DB->get_records('block_user_favorites', ['userid' => $this->userid], 'title ASC', '*');
     }
 
     /**
@@ -151,8 +151,9 @@ class favorites {
      */
     public function has_favorites() : bool {
         global $DB;
-        $record = $DB->get_records('block_user_favorites' , ['userid' => $this->userid] , '' , 'id' ,
-            0 , 1) ;
+        $record = $DB->get_records('block_user_favorites', ['userid' => $this->userid], '', 'id',
+            0, 1);
+
         return !empty($record);
     }
 

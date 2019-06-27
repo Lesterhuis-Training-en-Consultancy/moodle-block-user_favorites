@@ -244,7 +244,7 @@ class provider implements
     /**
      * get_urls
      *
-     * @param $userid
+     * @param int $userid
      *
      * @return array|mixed
      * @throws \dml_exception
