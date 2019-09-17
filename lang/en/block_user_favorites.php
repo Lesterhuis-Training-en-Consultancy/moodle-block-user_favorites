@@ -19,31 +19,38 @@
  *
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
- * @package   moodle-block-user_favorites
+ * @package    block_user_favorites
  * @copyright 26-10-2018 MFreak.nl
  * @author    Luuk Verhoeven
  **/
 
-$string['user_favorites:addinstance'] = 'Add a new block for user favorites';
-$string['user_favorites:myaddinstance'] = 'Add a new Block for user favorites to my moodle';
-$string['pluginname'] = 'User favorites';
-$string['description'] = 'Favorites block where you can set your own favorites';
+$string['user_favorites:addinstance'] = 'Add a new block for user favourites';
+$string['user_favorites:myaddinstance'] = 'Add a new Block for user favourites to my moodle';
+$string['pluginname'] = 'User favourites';
+$string['description'] = 'The block favourites allows the user to save there favourite pages';
 
 // Access.
-$string['user_favorites:add'] = 'Add favorites';
-$string['user_favorites:delete'] = 'Delete favorites';
+$string['user_favorites:add'] = 'Add favourite';
+$string['user_favorites:delete'] = 'Delete favourite';
 $string['user_favorites:view'] = 'View favorites';
 
 // Buttons.
-$string['btn:delete'] = 'Delete favorite';
-$string['btn:remove'] = 'Delete favorite';
-$string['btn:add'] = 'Favorite this page';
-$string['btn:edit'] = 'Edit favorite';
+$string['btn:delete'] = 'Delete favourite';
+$string['btn:remove'] = 'Delete favourite';
+$string['btn:add'] = 'Favourite this page';
+$string['btn:edit'] = 'Edit favourite';
 
 // Js.
 $string['javascript:yes'] = 'Save';
 $string['javascript:no'] = 'Cancel';
-$string['javascript:set_title'] = 'Set title of the favorite';
+$string['javascript:set_title'] = 'Set title of the favourite';
 
 // Privacy provider.
-$string['privacy:metadata:links'] = 'Links stored by the user favorites plugin';
+$string['privacy:metadata:links'] = 'Links stored by the user favourites plugin';
+
+// Privacy provider.
+$string['privacy:metadata:favorite:url'] = 'The url of the favorite link';
+$string['privacy:metadata:favorite:hash'] = 'The hash (identifier) of the favorite link';
+$string['privacy:metadata:favorite:title'] = 'The title of the favorite link';
+$string['privacy:metadata:favorite:created_at'] = 'The timestamp the link is created';
+$string['privacy:metadata:favorite'] = 'Information about the user\'s favorites';

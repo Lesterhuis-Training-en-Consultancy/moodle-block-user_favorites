@@ -17,18 +17,26 @@
 /**
  * Edit instance config.
  *
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
- * @package   moodle-block-user_favorites
- * @copyright 26-10-2018 MFreak.nl
- * @author    Luuk Verhoeven
+ * @package    block_user_favorites
+ * @copyright  26-10-2018 MFreak.nl
+ * @author     Luuk Verhoeven
  **/
 
 defined('MOODLE_INTERNAL') || die;
 
+/**
+ * Class block_user_favorites_edit_form
+ *
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @copyright  26-10-2018 MFreak.nl
+ */
 class block_user_favorites_edit_form extends block_edit_form {
 
     /**
+     * specific_definition
+     *
      * @param object $mform
      *
      * @throws coding_exception
@@ -41,6 +49,5 @@ class block_user_favorites_edit_form extends block_edit_form {
         $mform->addElement('text', 'config_title', get_string('pluginname', 'block_user_favorites'));
         $mform->setDefault('config_title', get_string('pluginname', 'block_user_favorites'));
         $mform->setType('config_title', PARAM_TEXT);
-
     }
 }

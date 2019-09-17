@@ -19,7 +19,7 @@
  *
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
- * @package   moodle-block-user_favorites
+ * @package    block_user_favorites
  * @copyright 26-10-2018 MFreak.nl
  * @author    Luuk Verhoeven
  **/
@@ -28,6 +28,11 @@ use block_user_favorites\output\output_favorites;
 
 defined('MOODLE_INTERNAL') || die;
 
+/**
+ * Class block_user_favorites_renderer
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @copyright 26-10-2018 MFreak.nl
+ */
 class block_user_favorites_renderer extends plugin_renderer_base {
 
     /**
