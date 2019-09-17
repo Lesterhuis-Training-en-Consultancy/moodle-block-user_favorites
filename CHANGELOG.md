@@ -32,7 +32,7 @@ Types of changes
 ## [3.7.2] - 2019-09-17
 
 #### Fixed
-- [#3] Saving user favourites to a separate table.
+- [ISSUE #3](https://github.com/MFreakNL/moodle-block-user_favorites/issues/3) Saving user favourites to a separate table.
 - Upgrade script `user_preference` -> `block_user_favorites` using a separate table.
 - Implement privacy provider for the new table.
 
