@@ -10,7 +10,9 @@ In brief, the MFreak block `user_favorites` gives the user a method to mark page
 
 [![Build Status](https://travis-ci.org/MFreakNL/moodle-block-user_favorites.svg?branch=master)](https://travis-ci.org/MoodleFreak/moodle-block-user_favorites) 
 ![Moodle35](https://img.shields.io/badge/moodle-3.5-brightgreen.svg)
-![PHP7.0](https://img.shields.io/badge/PHP-7.0-brightgreen.svg)
+![Moodle36](https://img.shields.io/badge/moodle-3.6-brightgreen.svg)
+![Moodle37](https://img.shields.io/badge/moodle-3.7-brightgreen.svg)
+
 
 ## Screens
 
@@ -27,17 +29,6 @@ In brief, the MFreak block `user_favorites` gives the user a method to mark page
 2.  Login as administrator
 3.  Go to Site Administrator > Notification
 4.  Install the plugin
-
-## Known issues
-We are using the `user_preferences` DB table for storing user favourites. 
-The max length stored here is a varchar 1333. Because of this, the plugin has a limit in how many favourites a user can store.
-
-### Workaround for this
-```sql
-ALTER TABLE `mdl_user_preferences` 
-MODIFY COLUMN `value` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' AFTER `name`
-```
-[Tracker issue 3](https://github.com/MFreakNL/moodle-block-user_favorites/issues/3)
 
 ## Security
 
