@@ -19,12 +19,22 @@
  *
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
- * @package   moodle-block-user_favorites
+ * @package    block_user_favorites
  * @copyright 26-10-2018 MFreak.nl
  * @author    Luuk Verhoeven
  **/
+
+use block_user_favorites\favorites;
+use block_user_favorites\output\output_favorites;
+
 defined('MOODLE_INTERNAL') || die;
 
+/**
+ * Class block_user_favorites
+ *
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @copyright  26-10-2018 MFreak.nl
+ */
 class block_user_favorites extends block_base {
 
     /**
@@ -125,9 +135,9 @@ class block_user_favorites extends block_base {
         ]);
 
         $this->content = new stdClass();
-        $favorites = new \block_user_favorites\favorites($USER->id);
+        $favorites = new favorites($USER->id);
         $renderer = $PAGE->get_renderer('block_user_favorites');
-        $this->content->text = $renderer->render_favorites(new \block_user_favorites\output\output_favorites($favorites,
+        $this->content->text = $renderer->render_favorites(new output_favorites($favorites,
             $url));
 
         return $this->content;

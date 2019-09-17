@@ -17,16 +17,22 @@
 /**
  * Helper class
  *
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
- * @package   moodle-block-user_favorites
- * @copyright 26-10-2018 MFreak.nl
- * @author    Luuk Verhoeven
+ * @package    block_user_favorites
+ * @copyright  26-10-2018 MFreak.nl
+ * @author     Luuk Verhoeven
  **/
 
 namespace block_user_favorites;
 defined('MOODLE_INTERNAL') || die;
 
+/**
+ * Class helper
+ *
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @copyright  26-10-2018 MFreak.nl
+ */
 class helper {
 
     /**
@@ -39,6 +45,34 @@ class helper {
 
         // Check if the environment has debugging enabled.
         return ($CFG->debug >= 32767 && $CFG->debugdisplay == 1);
+    }
+
+    /**
+     * Convert user_preference entries to a separate table
+     * We will keep the original serialized data for now
+     *
+     * @throws \coding_exception
+     * @throws \dml_exception
+     */
+    public static function convert_users_preference_favorites() {
+        global $DB;
+
+        $rs = $DB->get_recordset('user_preferences', [
+            'name' => 'user_favorites',
+        ]);
+
+        foreach ($rs as $row) {
+            $favorites = @unserialize($row->value);
+
+            if (empty($favorites)) {
+                continue;
+            }
+
+            $favoriteinstance = new favorites($row->userid);
+            array_walk($favorites, [$favoriteinstance, 'update_favorite'], $row->userid);
+
+        }
+        $rs->close();
     }
 
 }

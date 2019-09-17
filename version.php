@@ -19,15 +19,15 @@
  *
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
- * @package   moodle-block-user_favorites
+ * @package    block_user_favorites
  * @copyright 26-10-2018 MFreak.nl
  * @author    Luuk Verhoeven
  **/
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version = 2018103000;        // The current plugin version (Date: YYYYMMDDXX).
+$plugin->version = 2019062401;        // The current plugin version (Date: YYYYMMDDXX).
 $plugin->requires = 2017111300;        // Requires this Moodle version 3.4.
 $plugin->component = 'block_user_favorites'; // Full name of the plugin (used for diagnostics).
-$plugin->release = '1.0';
-$plugin->maturity = MATURITY_BETA;
+$plugin->release = '3.7.2';
+$plugin->maturity = MATURITY_STABLE;
