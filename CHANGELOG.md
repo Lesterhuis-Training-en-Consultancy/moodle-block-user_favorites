@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 # Plugin version.php information
 ```php
+// Example
+
 // Plugin release number corresponds to the lasest tested Moodle version in which the plugin has been tested.
 $plugin->release = '3.5.7'; // [3.5.7]
 
