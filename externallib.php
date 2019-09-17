@@ -17,28 +17,21 @@
 /**
  * Webservice needed for favorites mutations
  *
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
- * @package    block_user_favorites
- * @copyright  26-10-2018 MFreak.nl
- * @author     Luuk Verhoeven
+ * @package   moodle-block-user_favorites
+ * @copyright 26-10-2018 MFreak.nl
+ * @author    Luuk Verhoeven
  **/
-
-use block_user_favorites\favorites;
-use block_user_favorites\output\output_favorites;
 
 defined('MOODLE_INTERNAL') || die;
 
-/**
- * Class block_user_favorites_external
- *
- * @copyright 26-10-2018 MFreak.nl
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
 class block_user_favorites_external extends external_api {
 
     /**
      * If everything goes according plan, we can use this code.
+     *
+     * @const RESPONSE_CODE_SUCCESS
      */
     const RESPONSE_CODE_SUCCESS = 200;
 
@@ -48,22 +41,22 @@ class block_user_favorites_external extends external_api {
      * @param string $hash
      * @param string $title
      * @param int    $blockid
-     * @param string $url
+     * @param string $encode_url
      *
      * @return array
      * @throws coding_exception
-     * @throws moodle_exception
      * @throws required_capability_exception
+     * @throws moodle_exception
      */
     public static function set_url(string $hash, string $title, int $blockid, string $url = '') {
         global $USER;
 
         require_capability('block/user_favorites:add', context_block::instance($blockid), $USER);
-        $favorites = new favorites();
+        $favorites = new \block_user_favorites\favorites();
         if (!empty($url)) {
 
             if (!filter_var($url, FILTER_VALIDATE_URL) && $hash === md5($url)) {
-                throw new moodle_exception('Incorrect url.');
+                throw new \moodle_exception('Incorrect url.');
             }
 
             $favorites->set_by_url($url, $title);
@@ -115,13 +108,14 @@ class block_user_favorites_external extends external_api {
      * @return array
      * @throws required_capability_exception
      * @throws coding_exception
+     * @throws dml_exception
      */
     public static function delete_url(string $hash, int $blockid) {
         global $USER;
 
         require_capability('block/user_favorites:delete', context_block::instance($blockid), $USER);
 
-        $favorites = new favorites();
+        $favorites = new \block_user_favorites\favorites();
         $favorites->delete_by_hash($hash);
 
         return [
@@ -170,12 +164,12 @@ class block_user_favorites_external extends external_api {
         $context = context_block::instance($blockid);
         require_capability('block/user_favorites:view', $context, $USER);
 
-        $favorites = new favorites();
+        $favorites = new \block_user_favorites\favorites();
         $PAGE->set_context($context);
         $renderer = $PAGE->get_renderer('block_user_favorites');
 
         return [
-            'content' => $renderer->render_favorites(new output_favorites($favorites, $url)),
+            'content' => $renderer->render_favorites(new \block_user_favorites\output\output_favorites($favorites, $url)),
             'result_code' => self::RESPONSE_CODE_SUCCESS,
         ];
     }
