@@ -31,7 +31,7 @@ Types of changes
 * **Security** in case of vulnerabilities.
 
 
-## Version (3.8)
+## Version (3.8) - 2019-10-30
 
 ### Changed
 - Updated version number, no issues found.
