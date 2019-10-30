@@ -31,7 +31,12 @@ Types of changes
 * **Security** in case of vulnerabilities.
 
 
-## [3.7.2] - 2019-09-17
+## Version (3.8)
+
+### Changed
+- Updated version number, no issues found.
+
+## Version (3.7.2) - 2019-09-17
 
 ### Fixed
 - [ISSUE #3](https://github.com/MFreakNL/moodle-block-user_favorites/issues/3) Saving user favourites to a separate table.
@@ -39,7 +44,7 @@ Types of changes
 - Implement privacy provider for the new table.
 
 
-## [3.5.3] - 2019-05-20
+## Version (3.5.3) - 2019-05-20
 
 ### Added
 - Release of the first official stable version.

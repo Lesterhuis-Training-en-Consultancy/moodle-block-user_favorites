@@ -17,17 +17,17 @@
 /**
  * Version information.
  *
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  * @package    block_user_favorites
- * @copyright 26-10-2018 MFreak.nl
- * @author    Luuk Verhoeven
+ * @copyright  26-10-2018 MFreak.nl
+ * @author     Luuk Verhoeven
  **/
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version = 2019091700;        // The current plugin version (Date: YYYYMMDDXX).
+$plugin->version = 2019103000;        // The current plugin version (Date: YYYYMMDDXX).
 $plugin->requires = 2017111300;        // Requires this Moodle version 3.4.
 $plugin->component = 'block_user_favorites'; // Full name of the plugin (used for diagnostics).
-$plugin->release = '3.7.2';
+$plugin->release = '3.8';
 $plugin->maturity = MATURITY_STABLE;
