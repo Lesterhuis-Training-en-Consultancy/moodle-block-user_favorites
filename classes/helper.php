@@ -25,6 +25,9 @@
  **/
 
 namespace block_user_favorites;
+use coding_exception;
+use dml_exception;
+
 defined('MOODLE_INTERNAL') || die;
 
 /**
@@ -40,7 +43,7 @@ class helper {
      *
      * @return bool
      */
-    public static function has_debugging_enabled() {
+    public static function has_debugging_enabled() : bool {
         global $CFG;
 
         // Check if the environment has debugging enabled.
@@ -51,10 +54,10 @@ class helper {
      * Convert user_preference entries to a separate table
      * We will keep the original serialized data for now
      *
-     * @throws \coding_exception
-     * @throws \dml_exception
+     * @throws dml_exception
+     * @throws coding_exception
      */
-    public static function convert_users_preference_favorites() {
+    public static function convert_users_preference_favorites() : void {
         global $DB;
 
         $rs = $DB->get_recordset('user_preferences', [

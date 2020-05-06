@@ -26,8 +26,8 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version = 2019103000;        // The current plugin version (Date: YYYYMMDDXX).
+$plugin->version = 2020050600;        // The current plugin version (Date: YYYYMMDDXX).
 $plugin->requires = 2017111300;        // Requires this Moodle version 3.4.
 $plugin->component = 'block_user_favorites'; // Full name of the plugin (used for diagnostics).
-$plugin->release = '3.8';
+$plugin->release = '3.9';
 $plugin->maturity = MATURITY_STABLE;

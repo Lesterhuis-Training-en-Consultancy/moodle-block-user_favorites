@@ -25,6 +25,8 @@
  **/
 
 namespace block_user_favorites;
+use dml_exception;
+
 defined('MOODLE_INTERNAL') || die;
 
 /**
@@ -64,7 +66,7 @@ class favorites {
      * @param int       $userid
      *
      * @return int
-     * @throws \dml_exception
+     * @throws dml_exception
      */
     public function update_favorite(\stdClass $favorite, string $hash, int $userid) : int {
         global $DB;
@@ -99,10 +101,9 @@ class favorites {
      * @param string $title
      * @param int    $sort
      *
-     * @throws \coding_exception
-     * @throws \dml_exception
+     * @throws dml_exception
      */
-    public function set_by_url(string $url, string $title = '', int $sort = 0) {
+    public function set_by_url(string $url, string $title = '', int $sort = 0) : void {
         global $USER;
         $hash = md5($url);
 
@@ -119,10 +120,9 @@ class favorites {
      *
      * @param string $hash
      *
-     * @throws \coding_exception
-     * @throws \dml_exception
+     * @throws dml_exception
      */
-    public function delete_by_hash(string $hash) {
+    public function delete_by_hash(string $hash) : void {
         global $DB;
         $DB->delete_records('block_user_favorites', [
             'userid' => $this->userid,
@@ -134,7 +134,7 @@ class favorites {
      * Get_all favorites.
      *
      * @return array|mixed
-     * @throws \dml_exception
+     * @throws dml_exception
      */
     public function get_all() {
         global $DB;
@@ -147,7 +147,7 @@ class favorites {
      * Check if it has favorites.
      *
      * @return bool
-     * @throws \dml_exception
+     * @throws dml_exception
      */
     public function has_favorites() : bool {
         global $DB;
@@ -163,10 +163,9 @@ class favorites {
      * @param string $hash
      * @param string $title
      *
-     * @throws \coding_exception
-     * @throws \dml_exception
+     * @throws dml_exception
      */
-    public function set_title(string $hash, string $title) {
+    public function set_title(string $hash, string $title) : void {
 
         $this->update_favorite((object)[
             'title' => $title,

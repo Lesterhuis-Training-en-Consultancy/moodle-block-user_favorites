@@ -17,18 +17,20 @@
 /**
  * output_favorites
  *
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  * @package    block_user_favorites
- * @copyright 26-10-2018 MFreak.nl
- * @author    Luuk Verhoeven
+ * @copyright  26-10-2018 MFreak.nl
+ * @author     Luuk Verhoeven
  **/
 
 namespace block_user_favorites\output;
 
 use block_user_favorites\favorites;
+use dml_exception;
 use renderable;
 use renderer_base;
+use stdClass;
 use templatable;
 
 defined('MOODLE_INTERNAL') || die;
@@ -37,7 +39,7 @@ defined('MOODLE_INTERNAL') || die;
  * Class output_favorites
  *
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @copyright 26-10-2018 MFreak.nl
+ * @copyright  26-10-2018 MFreak.nl
  */
 class output_favorites implements renderable, templatable {
 
@@ -69,9 +71,10 @@ class output_favorites implements renderable, templatable {
      *
      * @param renderer_base $output Used to do a final render of any components that need to be rendered for export.
      *
-     * @return \stdClass
+     * @return stdClass
+     * @throws dml_exception
      */
-    public function export_for_template(renderer_base $output) {
+    public function export_for_template(renderer_base $output) : stdClass{
         global $PAGE;
         $data = [];
         $hascurrenturl = false;

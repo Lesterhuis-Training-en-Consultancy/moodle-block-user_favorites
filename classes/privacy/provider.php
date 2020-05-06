@@ -110,7 +110,7 @@ class provider implements
      * @param userlist $userlist The userlist containing the list of users who have data in this context/plugin
      *                           combination.
      */
-    public static function get_users_in_context(userlist $userlist) {
+    public static function get_users_in_context(userlist $userlist) : void{
         $context = $userlist->get_context();
 
         if (!$context instanceof \context_user) {
@@ -140,7 +140,7 @@ class provider implements
      * @throws \dml_exception
      * @throws coding_exception
      */
-    public static function export_user_data(approved_contextlist $contextlist) {
+    public static function export_user_data(approved_contextlist $contextlist) : void{
 
         // If the user has block_community data, then only the User context should be present so get the first context.
         $contexts = $contextlist->get_contexts();
@@ -172,7 +172,7 @@ class provider implements
      *
      * @throws \dml_exception
      */
-    public static function delete_data_for_all_users_in_context(\context $context) {
+    public static function delete_data_for_all_users_in_context(\context $context) : void{
         global $DB;
 
         // Sanity check that context is at the User context level, then get the userid.
@@ -191,7 +191,7 @@ class provider implements
      *
      * @throws \dml_exception
      */
-    public static function delete_data_for_users(approved_userlist $userlist) {
+    public static function delete_data_for_users(approved_userlist $userlist) : void {
         global $DB;
 
         $context = $userlist->get_context();
@@ -208,7 +208,7 @@ class provider implements
      *
      * @throws \dml_exception
      */
-    public static function delete_data_for_user(approved_contextlist $contextlist) {
+    public static function delete_data_for_user(approved_contextlist $contextlist) : void {
         global $DB;
 
         // If the user has block_community data, then only the User context should be present so get the first context.
@@ -233,7 +233,7 @@ class provider implements
      *
      * @throws coding_exception
      */
-    public static function export_user_preferences(int $userid) {
+    public static function export_user_preferences(int $userid)  : void{
         $preference = get_user_preferences('user_favorites', null, $userid);
         if (isset($preference)) {
             writer::export_user_preference('user_favorites', '',

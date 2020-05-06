@@ -185,7 +185,7 @@ define(['jquery', 'core/ajax', 'core/notification'], function($, Ajax, Notificat
 
             }).on('click', '.fa-remove', function() {
                 // Remove a fav in the list.
-                favoritesModule.remove( $(this).closest('li').data());
+                favoritesModule.remove($(this).closest('li').data());
 
             }).on('click', '.fa-edit', function() {
                 // Edit a fav int the list.
