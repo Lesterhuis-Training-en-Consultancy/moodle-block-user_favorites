@@ -17,11 +17,11 @@
 /**
  * Lang "NL"
  *
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  * @package    block_user_favorites
- * @copyright 26-10-2018 MFreak.nl
- * @author    Luuk Verhoeven
+ * @copyright  26-10-2018 MFreak.nl
+ * @author     Luuk Verhoeven
  **/
 
 $string['user_favorites:addinstance'] = 'Blok gebruikers favorieten toevoegen';

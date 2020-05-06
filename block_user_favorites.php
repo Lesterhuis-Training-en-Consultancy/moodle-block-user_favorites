@@ -17,11 +17,11 @@
 /**
  * block_user_favorites
  *
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  * @package    block_user_favorites
- * @copyright 26-10-2018 MFreak.nl
- * @author    Luuk Verhoeven
+ * @copyright  26-10-2018 MFreak.nl
+ * @author     Luuk Verhoeven
  **/
 
 use block_user_favorites\favorites;
@@ -42,7 +42,7 @@ class block_user_favorites extends block_base {
      *
      * @throws coding_exception
      */
-    public function init() {
+    public function init() : void {
         $this->title = get_string('pluginname', 'block_user_favorites');
     }
 
@@ -52,7 +52,7 @@ class block_user_favorites extends block_base {
      *
      * @return boolean
      */
-    public function instance_allow_multiple() {
+    public function instance_allow_multiple() : bool{
         return false;
     }
 
@@ -66,7 +66,7 @@ class block_user_favorites extends block_base {
      *
      * @return boolean
      */
-    public function instance_allow_config() {
+    public function instance_allow_config() : bool {
         return true;
     }
 
@@ -75,7 +75,7 @@ class block_user_favorites extends block_base {
      *
      * @return array
      */
-    public function applicable_formats() {
+    public function applicable_formats() : array {
         return ['all' => true];
     }
 
@@ -87,7 +87,7 @@ class block_user_favorites extends block_base {
      * @return void
      * @throws coding_exception
      */
-    public function specialization() {
+    public function specialization() : void{
         if (empty($this->config->title)) {
             $this->title = get_string('pluginname', 'block_user_favorites');
         } else {
@@ -102,7 +102,7 @@ class block_user_favorites extends block_base {
      * @throws coding_exception
      * @throws moodle_exception
      */
-    public function get_content() {
+    public function get_content() : stdClass {
 
         global $PAGE, $USER;
 
