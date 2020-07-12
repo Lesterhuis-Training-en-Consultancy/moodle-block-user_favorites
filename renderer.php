@@ -17,11 +17,11 @@
 /**
  * Renderer class UI.
  *
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
  * @package    block_user_favorites
- * @copyright 26-10-2018 MFreak.nl
- * @author    Luuk Verhoeven
+ * @copyright  26-10-2018 MFreak.nl
+ * @author     Luuk Verhoeven
  **/
 
 use block_user_favorites\output\output_favorites;
@@ -30,8 +30,9 @@ defined('MOODLE_INTERNAL') || die;
 
 /**
  * Class block_user_favorites_renderer
+ *
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @copyright 26-10-2018 MFreak.nl
+ * @copyright  26-10-2018 MFreak.nl
  */
 class block_user_favorites_renderer extends plugin_renderer_base {
 
@@ -40,12 +41,12 @@ class block_user_favorites_renderer extends plugin_renderer_base {
      *
      * @param output_favorites $renderable
      *
-     * @return bool|string
-     * @throws \moodle_exception
+     * @return string
+     * @throws moodle_exception
      */
-    public function render_favorites(output_favorites $renderable) {
+    public function render_favorites(output_favorites $renderable) : string{
         $data = $renderable->export_for_template($this);
 
-        return parent::render_from_template('block_user_favorites/favorites', $data);
+        return $this->render_from_template('block_user_favorites/favorites', $data);
     }
 }

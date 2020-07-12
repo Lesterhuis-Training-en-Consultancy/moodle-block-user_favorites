@@ -41,7 +41,7 @@ class block_user_favorites_edit_form extends block_edit_form {
      *
      * @throws coding_exception
      */
-    protected function specific_definition($mform) {
+    protected function specific_definition($mform) : void {
 
         $mform->addElement('header', 'configheader', get_string('blocksettings', 'block'));
 
