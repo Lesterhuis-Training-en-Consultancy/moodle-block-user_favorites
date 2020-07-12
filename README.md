@@ -1,6 +1,7 @@
 ## Moodle block for marking your favourite pages as bookmarks
 
 In brief, the MFreak block `user_favorites` gives the user a method to mark pages as favourite.
+Special thanks to Gemma Lesterhuis ([Lesterhuis Training & Consultancy](https://ltnc.nl/)) for develop & design, useful input, bug reports and beta testing
  
 
  Special thanks to Gemma Lesterhuis ([Lesterhuis Training & Consultancy](https://ltnc.nl/)) for develop & design, useful input, bug reports and beta testing
