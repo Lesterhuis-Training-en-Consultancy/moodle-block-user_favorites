@@ -41,25 +41,25 @@ class block_user_favorites_external extends external_api {
      * @param string $hash
      * @param string $title
      * @param int    $blockid
-     * @param string $url
+     * @param array $optional
      *
      * @return array
      * @throws dml_exception
      * @throws moodle_exception
      * @throws required_capability_exception
      */
-    public static function set_url(string $hash, string $title, int $blockid, string $url = '') : array{
+    public static function set_url(string $hash, string $title, int $blockid, array $optional) : array {
         global $USER;
 
         require_capability('block/user_favorites:add', context_block::instance($blockid), $USER);
         $favorites = new \block_user_favorites\favorites();
-        if (!empty($url)) {
+        if (!empty($optional['url'])) {
 
-            if (!filter_var($url, FILTER_VALIDATE_URL) && $hash === md5($url)) {
+            if (!filter_var($optional['url'], FILTER_VALIDATE_URL) && $hash === md5($optional['url'])) {
                 throw new \moodle_exception('Incorrect url.');
             }
 
-            $favorites->set_by_url($url, $title);
+            $favorites->set_by_url($optional['url'], $title);
         } else {
 
             // Only update title if there is no url provided.
@@ -76,13 +76,17 @@ class block_user_favorites_external extends external_api {
      *
      * @return external_function_parameters
      */
-    public static function set_url_parameters() : external_function_parameters{
+    public static function set_url_parameters() : external_function_parameters {
         return new external_function_parameters (
             [
                 'hash' => new external_value(PARAM_TEXT, 'URL HASH', VALUE_REQUIRED),
                 'title' => new external_value(PARAM_RAW, 'The title of the url', VALUE_REQUIRED),
                 'blockid' => new external_value(PARAM_INT, 'The ID of the block', VALUE_REQUIRED),
-                'url' => new external_value(PARAM_URL, 'URL', VALUE_OPTIONAL),
+                'optional' => new external_single_structure(
+                    [
+                        'url' => new external_value(PARAM_URL, 'URL', VALUE_OPTIONAL),
+                    ]
+                ),
             ]
         );
     }
@@ -92,7 +96,7 @@ class block_user_favorites_external extends external_api {
      *
      * @return external_single_structure
      */
-    public static function set_url_returns() : external_single_structure{
+    public static function set_url_returns() : external_single_structure {
         return new external_single_structure(
             [
                 'result_code' => new external_value(PARAM_INT, 'The response code', VALUE_REQUIRED),
@@ -109,7 +113,7 @@ class block_user_favorites_external extends external_api {
      * @throws required_capability_exception
      * @throws dml_exception
      */
-    public static function delete_url(string $hash, int $blockid): array {
+    public static function delete_url(string $hash, int $blockid) : array {
         global $USER;
 
         require_capability('block/user_favorites:delete', context_block::instance($blockid), $USER);
@@ -177,7 +181,7 @@ class block_user_favorites_external extends external_api {
      *
      * @return external_function_parameters
      */
-    public static function get_content_parameters() : external_function_parameters{
+    public static function get_content_parameters() : external_function_parameters {
         return new external_function_parameters (
             [
                 'url' => new external_value(PARAM_URL, 'The current url', VALUE_REQUIRED),

@@ -112,7 +112,9 @@ define(['jquery', 'core/ajax', 'core/notification'], function($, Ajax, Notificat
                         methodname: 'block_user_favorites_set_url',
                         args: {
                             hash: data.hash,
-                            url: data.url,
+                            optional : {
+                                url: data.url,
+                            },
                             title: $('#favorite-url').val(),
                             blockid: opts.id,
                         }
@@ -211,7 +213,7 @@ define(['jquery', 'core/ajax', 'core/notification'], function($, Ajax, Notificat
 
             $.noConflict();
             $(document).ready(function() {
-                debug.log('Block User Favorites v1.1');
+                debug.log('Block User Favorites v1.2');
                 favoritesModule.init();
             });
         }
