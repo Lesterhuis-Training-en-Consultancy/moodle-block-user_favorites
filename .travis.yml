@@ -1,19 +1,12 @@
 language: php
 
-# Workaround for fixing that Selenium server is not running and therefore javascript Behat tests are not working:
-# https://github.com/moodlerooms/moodle-plugin-ci/issues/70
-sudo: required
+addons:
+  postgresql: "9.6"
 
 services:
   - mysql
   - postgresql
-
-addons:
-  firefox: "47.0.1"
-  postgresql: "9.4"
-  apt:
-    packages:
-      - openjdk-8-jre-headless
+  - docker
 
 cache:
   directories:
@@ -21,78 +14,37 @@ cache:
     - $HOME/.npm
 
 php:
-  # PHP 5.6 gives errors because of the provider.php needs to be PHP7
-  - 7.1
+  - 7.2
+  - 7.4
 
 env:
   global:
-    - MOODLE_BRANCH=MOODLE_32_STABLE
-    - MOODLE_BRANCH=MOODLE_33_STABLE
-    - MOODLE_BRANCH=MOODLE_34_STABLE
-    - MOODLE_BRANCH=MOODLE_35_STABLE
-    - MOODLE_BRANCH=MOODLE_36_STABLE
-    - MOODLE_BRANCH=MOODLE_37_STABLE
-    - IGNORE_PATHS=vendor,source
-    - IGNORE_NAMES=*.txt,*.md
-
+    - MOODLE_BRANCH=MOODLE_310_STABLE
   matrix:
     - DB=pgsql
     - DB=mysqli
 
 before_install:
   - phpenv config-rm xdebug.ini
-  - nvm install 8.9
-  - nvm use 8.9
+  - nvm install 14 # moodle-plugin-ci still uses 8.9, but Moodle core switched to 14 in MDL-66109.
+  - nvm use 14
   - cd ../..
-  - composer create-project -n --no-dev --prefer-dist moodlerooms/moodle-plugin-ci ci ^2
+  - composer create-project -n --no-dev --prefer-dist blackboard-open-source/moodle-plugin-ci ci dev-master
   - export PATH="$(cd ci/bin; pwd):$(cd ci/vendor/bin; pwd):$PATH"
+#   - docker run -d -p 127.0.0.1:4444:4444 --net=host -v /dev/shm:/dev/shm selenium/standalone-chrome:3
 
 install:
-  - moodle-plugin-ci add-plugin moodlehq/moodle-local_moodlecheck
   - moodle-plugin-ci install
 
 script:
-  - php moodle/local/moodlecheck/cli/moodlecheck.php --path=blocks/user_favorites --format=text
-  # This step lints your PHP files to check for syntax errors.
   - moodle-plugin-ci phplint
-  # This step runs the PHP Copy/Paste Detector on your plugin.
-  # This helps to find code duplication.
-  - moodle-plugin-ci phpcpd
-  # This step runs the PHP Mess Detector on your plugin. This helps to find
-  # potential problems with your code which can result in
-  # refactoring opportunities.
+  - moodle-plugin-ci phpcpd || true # Output warnings but do not fail the build because of duplicated but well working code
   - moodle-plugin-ci phpmd
-  # This step runs the Moodle Code Checker to make sure that your plugin
-  # conforms to the Moodle coding standards.  It is highly recommended
-  # that you keep this step.
   - moodle-plugin-ci codechecker
-  # This step runs Moodle PHPDoc checker on your plugin.
-  # This step runs some light validation on the plugin file structure
-  # and code.  Validation can be plugin specific.
   - moodle-plugin-ci validate
-  # This step validates your plugin's upgrade steps.
   - moodle-plugin-ci savepoints
-  # This step validates the HTML and Javascript in your Mustache templates.
-  - moodle-plugin-ci mustache || true
-
-  #Eslint
-  - moodle-plugin-ci grunt -t eslint:amd -t uglify:amd
-
-  # This step runs Grunt tasks on the plugin.  By default, it tries to run
-  # tasks relevant to your plugin and Moodle version, but you can run
-  # specific tasks by passing them as options,
-  # EG: moodle-plugin-ci grunt -t task1 -t task2
+  - moodle-plugin-ci mustache
   - moodle-plugin-ci grunt
-  # This step runs the PHPUnit tests of your plugin.  If your plugin has
-  # PHPUnit tests, then it is highly recommended that you keep this step.
+  - moodle-plugin-ci phpdoc
   - moodle-plugin-ci phpunit
-  # This step runs the Behat tests of your plugin.  If your plugin has
-  # Behat tests, then it is highly recommended that you keep this step.
-  # There are two important options that you may want to use:
-  #   - The auto rerun option allows you to rerun failures X number of times,
-  #     default is 2, EG usage: --auto-rerun 3
-  #   - The dump option allows you to print the failure HTML to the console,
-  #     handy for debugging, EG usage: --dump
-  #   - The suite option allows you to set the theme to use for behat test. If
-  #     not specified, the default theme is used, EG usage: --suite boost
-  - moodle-plugin-ci behat
+#   - moodle-plugin-ci behat --profile chrome --dump
