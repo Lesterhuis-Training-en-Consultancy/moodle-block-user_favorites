@@ -47,22 +47,12 @@ class block_user_favorites extends block_base {
     }
 
     /**
-     * Are you going to allow multiple instances of each block?
-     * If yes, then it is assumed that the block WILL USE per-instance configuration
-     *
-     * @return boolean
-     */
-    public function instance_allow_multiple() : bool{
-        return false;
-    }
-
-    /**
      * Is each block of this type going to have instance-specific configuration?
-     * Normally, this setting is controlled by {@link instance_allow_multiple()}: if multiple
+     * Normally, this setting is controlled by instance_allow_multiple() if multiple
      * instances are allowed, then each will surely need its own configuration. However, in some
      * cases it may be necessary to provide instance configuration to blocks that do not want to
      * allow multiple instances. In that case, make this function return true.
-     * I stress again that this makes a difference ONLY if {@link instance_allow_multiple()} returns false.
+     * I stress again that this makes a difference ONLY if instance_allow_multiple() returns false.
      *
      * @return boolean
      */
@@ -87,7 +77,7 @@ class block_user_favorites extends block_base {
      * @return void
      * @throws coding_exception
      */
-    public function specialization() : void{
+    public function specialization() : void {
         if (empty($this->config->title)) {
             $this->title = get_string('pluginname', 'block_user_favorites');
         } else {
@@ -103,8 +93,7 @@ class block_user_favorites extends block_base {
      * @throws moodle_exception
      */
     public function get_content() : stdClass {
-
-        global $PAGE, $USER;
+        global $USER;
 
         if ($this->content !== null) {
             return $this->content;
@@ -117,14 +106,14 @@ class block_user_favorites extends block_base {
             return $this->content;
         }
 
-        $PAGE->requires->strings_for_js([
+        $this->page->requires->strings_for_js([
             'javascript:yes',
             'javascript:no',
             'javascript:set_title',
         ], 'block_user_favorites');
 
-        $url = $PAGE->url->out(false);
-        $PAGE->requires->js_call_amd('block_user_favorites/favorites', 'initialise', [
+        $url = $this->page->url->out(false);
+        $this->page->requires->js_call_amd('block_user_favorites/favorites', 'initialise', [
             [
                 'debugjs' => \block_user_favorites\helper::has_debugging_enabled(),
                 'id' => $this->instance->id,
@@ -136,7 +125,7 @@ class block_user_favorites extends block_base {
 
         $this->content = new stdClass();
         $favorites = new favorites($USER->id);
-        $renderer = $PAGE->get_renderer('block_user_favorites');
+        $renderer = $this->page->get_renderer('block_user_favorites');
         $this->content->text = $renderer->render_favorites(new output_favorites($favorites,
             $url));
 

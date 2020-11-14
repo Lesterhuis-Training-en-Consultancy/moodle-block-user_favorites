@@ -74,7 +74,7 @@ class output_favorites implements renderable, templatable {
      * @return stdClass
      * @throws dml_exception
      */
-    public function export_for_template(renderer_base $output) : stdClass{
+    public function export_for_template(renderer_base $output) : stdClass {
         global $PAGE;
         $data = [];
         $hascurrenturl = false;

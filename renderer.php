@@ -44,7 +44,7 @@ class block_user_favorites_renderer extends plugin_renderer_base {
      * @return string
      * @throws moodle_exception
      */
-    public function render_favorites(output_favorites $renderable) : string{
+    public function render_favorites(output_favorites $renderable) : string {
         $data = $renderable->export_for_template($this);
 
         return $this->render_from_template('block_user_favorites/favorites', $data);

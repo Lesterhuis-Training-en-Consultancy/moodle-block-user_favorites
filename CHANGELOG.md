@@ -30,26 +30,34 @@ Types of changes
 * **Fixed** for any bug fixes.
 * **Security** in case of vulnerabilities.
 
+## Version (3.10.1) - 2020-11-14
+
+##### Changed
+- Updated version number, no issues found.
+
+##### Removed
+- Remove `.eslintrc` `Gruntfile.js` and `packages.json` from the project causes Travis issues.
+
 ## Version (3.9.1) - 2020-07-12
 
-### Fix
+##### Fix
 - GH-8 External API nested Optional url (Thanks @ewallah)
 
 
 ## Version (3.9) - 2020-05-06
 
-### Changed
+##### Changed
 - Updated version number, no issues found.
 - Minimum version PHP 7.2
 
 ## Version (3.8) - 2019-10-30
 
-### Changed
+##### Changed
 - Updated version number, no issues found.
 
 ## Version (3.7.2) - 2019-09-17
 
-### Fixed
+##### Fixed
 - [ISSUE #3](https://github.com/MFreakNL/moodle-block-user_favorites/issues/3) Saving user favourites to a separate table.
 - Upgrade script `user_preference` -> `block_user_favorites` using a separate table.
 - Implement privacy provider for the new table.
@@ -57,5 +65,5 @@ Types of changes
 
 ## Version (3.5.3) - 2019-05-20
 
-### Added
+##### Added
 - Release of the first official stable version.

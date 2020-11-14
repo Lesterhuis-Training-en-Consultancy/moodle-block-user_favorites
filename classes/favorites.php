@@ -25,6 +25,7 @@
  **/
 
 namespace block_user_favorites;
+
 use dml_exception;
 
 defined('MOODLE_INTERNAL') || die;
