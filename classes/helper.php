@@ -25,6 +25,7 @@
  **/
 
 namespace block_user_favorites;
+
 use coding_exception;
 use dml_exception;
 

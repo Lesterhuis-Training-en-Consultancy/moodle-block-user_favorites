@@ -112,7 +112,7 @@ define(['jquery', 'core/ajax', 'core/notification'], function($, Ajax, Notificat
                         methodname: 'block_user_favorites_set_url',
                         args: {
                             hash: data.hash,
-                            optional : {
+                            optional: {
                                 url: data.url,
                             },
                             title: $('#favorite-url').val(),

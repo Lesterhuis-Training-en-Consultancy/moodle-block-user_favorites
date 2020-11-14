@@ -19,19 +19,27 @@
  *
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
- * @package   moodle-block-user_favorites
+ * @package   block-user_favorites
  * @copyright 26-10-2018 MFreak.nl
  * @author    Luuk Verhoeven
  **/
 
 defined('MOODLE_INTERNAL') || die;
 
+/**
+ * Class block_user_favorites_external
+ *
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ *
+ * @package   block-user_favorites
+ * @copyright 26-10-2018 MFreak.nl
+ * @author    Luuk Verhoeven
+ */
 class block_user_favorites_external extends external_api {
 
     /**
      * If everything goes according plan, we can use this code.
-     *
-     * @const RESPONSE_CODE_SUCCESS
+     * RESPONSE_CODE_SUCCESS
      */
     public const RESPONSE_CODE_SUCCESS = 200;
 
