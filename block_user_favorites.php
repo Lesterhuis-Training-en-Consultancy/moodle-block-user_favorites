@@ -27,8 +27,6 @@
 use block_user_favorites\favorites;
 use block_user_favorites\output\output_favorites;
 
-defined('MOODLE_INTERNAL') || die;
-
 /**
  * Class block_user_favorites
  *
@@ -42,7 +40,7 @@ class block_user_favorites extends block_base {
      *
      * @throws coding_exception
      */
-    public function init() : void {
+    public function init(): void {
         $this->title = get_string('pluginname', 'block_user_favorites');
     }
 
@@ -56,7 +54,7 @@ class block_user_favorites extends block_base {
      *
      * @return boolean
      */
-    public function instance_allow_config() : bool {
+    public function instance_allow_config(): bool {
         return true;
     }
 
@@ -65,7 +63,7 @@ class block_user_favorites extends block_base {
      *
      * @return array
      */
-    public function applicable_formats() : array {
+    public function applicable_formats(): array {
         return ['all' => true];
     }
 
@@ -77,7 +75,7 @@ class block_user_favorites extends block_base {
      * @return void
      * @throws coding_exception
      */
-    public function specialization() : void {
+    public function specialization(): void {
         if (empty($this->config->title)) {
             $this->title = get_string('pluginname', 'block_user_favorites');
         } else {
@@ -92,7 +90,7 @@ class block_user_favorites extends block_base {
      * @throws coding_exception
      * @throws moodle_exception
      */
-    public function get_content() : stdClass {
+    public function get_content(): stdClass {
         global $USER;
 
         if ($this->content !== null) {
@@ -131,5 +129,6 @@ class block_user_favorites extends block_base {
 
         return $this->content;
     }
+
 }
 

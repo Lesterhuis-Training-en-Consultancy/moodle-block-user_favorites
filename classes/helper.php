@@ -29,8 +29,6 @@ namespace block_user_favorites;
 use coding_exception;
 use dml_exception;
 
-defined('MOODLE_INTERNAL') || die;
-
 /**
  * Class helper
  *
@@ -44,7 +42,7 @@ class helper {
      *
      * @return bool
      */
-    public static function has_debugging_enabled() : bool {
+    public static function has_debugging_enabled(): bool {
         global $CFG;
 
         // Check if the environment has debugging enabled.
@@ -58,7 +56,7 @@ class helper {
      * @throws dml_exception
      * @throws coding_exception
      */
-    public static function convert_users_preference_favorites() : void {
+    public static function convert_users_preference_favorites(): void {
         global $DB;
 
         $rs = $DB->get_recordset('user_preferences', [
