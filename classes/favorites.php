@@ -117,6 +117,22 @@ class favorites {
     }
 
     /**
+     * Set order of favorite.
+     *
+     * @param string $hash
+     * @param int    $sortorder
+     *
+     * @throws dml_exception
+     */
+    public function set_order(string $hash, int $sortorder = 0) : void {
+        global $USER;
+
+        $this->update_favorite((object)[
+            'sortorder' => $sortorder
+        ], $hash, $USER->id);
+    }
+
+    /**
      * Delete by hash.
      *
      * @param string $hash
@@ -141,7 +157,7 @@ class favorites {
         global $DB;
 
         // Todo ordering on sortorder.
-        return $DB->get_records('block_user_favorites', ['userid' => $this->userid], 'sortorder DESC', '*');
+        return $DB->get_records('block_user_favorites', ['userid' => $this->userid], 'sortorder ASC', '*');
     }
 
     /**

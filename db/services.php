@@ -57,4 +57,13 @@ $functions = [
         'ajax' => true,
     ],
 
+    'block_user_favorites_set_order' => [
+        'classname' => 'block_user_favorites_external',
+        'methodname' => 'set_order',
+        'classpath' => 'blocks/user_favorites/externallib.php',
+        'description' => 'Set a order to user there favorite',
+        'type' => 'write',
+        'loginrequired' => true,
+        'ajax' => true,
+    ],
 ];

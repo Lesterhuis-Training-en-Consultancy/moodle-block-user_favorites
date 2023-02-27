@@ -17,14 +17,12 @@
  * Tested in Moodle 3.5
  *
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- *
- * @package moodle-block-user_favorites
  * @copyright 2018 MFreak.nl
  * @author    Luuk Verhoeven
  **/
 
 /* eslint no-unused-expressions: "off", no-console:off, no-invalid-this:"off",no-script-url:"off", block-scoped-var: "off" */
-define(['jquery', 'core/ajax', 'core/notification'], function($, Ajax, Notification) {
+define(['jquery', 'core/ajax', 'core/notification', 'jqueryui'], function($, Ajax, Notification) {
 
     /**
      * Opts that are possible to set.
@@ -128,6 +126,21 @@ define(['jquery', 'core/ajax', 'core/notification'], function($, Ajax, Notificat
         },
 
         /**
+         * Add or update a url
+         */
+        setOrder: function() {
+            $('ol#block_user_favorites-items li' ).each(function(index){
+                Ajax.call([{
+                    methodname: 'block_user_favorites_set_order',
+                    args: {
+                        hash: $(this).data('hash'),
+                        sortorder: index
+                    }
+                }]);
+            });
+        },
+
+        /**
          * Delete a url
          *
          * @param {object} data
@@ -194,6 +207,13 @@ define(['jquery', 'core/ajax', 'core/notification'], function($, Ajax, Notificat
                 var data = $(this).parent().parent().data();
                 favoritesModule.setUrl(data, $(this).parent().parent().find('a').text());
             });
+
+
+            $('ol#block_user_favorites-items' ).sortable({
+                update: function() {
+                    favoritesModule.setOrder();
+                }
+            });
         }
     };
 
@@ -216,6 +236,8 @@ define(['jquery', 'core/ajax', 'core/notification'], function($, Ajax, Notificat
                 debug.log('Block User Favorites v1.2');
                 favoritesModule.init();
             });
+
         }
     };
+
 });

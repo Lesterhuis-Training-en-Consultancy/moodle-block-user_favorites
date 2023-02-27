@@ -39,6 +39,7 @@ $string['btn:delete'] = 'Verwijder favoriet';
 $string['btn:remove'] = 'Verwijder favoriet';
 $string['btn:add'] = 'Voeg huidige pagina toe aan favorieten';
 $string['btn:edit'] = 'Bewerk favoriet';
+$string['btn:drag'] = 'Versleep favoriet';
 
 // Js.
 $string['javascript:yes'] = 'Opslaan';
