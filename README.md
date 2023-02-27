@@ -5,7 +5,7 @@ In brief, the MFreak block `user_favorites` gives the user a method to mark page
 Special thanks to Gemma Lesterhuis ([Lesterhuis Training & Consultancy](https://ltnc.nl/)) for develop & design, useful input, bug reports and beta testing
 
 ![MFreak.nl](https://MFreak.nl/logo_small.png)
-![Lesterhuis Training & Consultancy](https://MFreak.nl/logo_small_ltnc.png)
+![Lesterhuis Training & Consultancy](https://ldesignmedia.nl/logo_small_ltnc.png)
 
 * Author: Luuk Verhoeven, [MFreak.nl](https://MFreak.nl/)
 * Author: Gemma Lesterhuis, [Lesterhuis Training & Consultancy](https://ltnc.nl/)
