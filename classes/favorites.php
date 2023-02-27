@@ -155,8 +155,6 @@ class favorites {
      */
     public function get_all() {
         global $DB;
-
-        // Todo ordering on sortorder.
         return $DB->get_records('block_user_favorites', ['userid' => $this->userid], 'sortorder ASC', '*');
     }
 
