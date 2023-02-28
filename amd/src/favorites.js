@@ -107,14 +107,13 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/log'], function ($, Aj
                 M.util.get_string('javascript:yes', 'block_user_favorites'),
                 M.util.get_string('javascript:no', 'block_user_favorites'), function () {
 
-                    Log.log('URL: ' + window.location.href);
-
                     var request = Ajax.call([{
                         methodname: 'block_user_favorites_set_url',
                         args: {
                             hash: data.hash,
                             optional: {
-                                url: window.location.href,
+                                url: data.url,
+                                action: data.action,
                             },
                             title: $('#favorite-url').val(),
                             blockid: opts.id,
@@ -174,10 +173,14 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/log'], function ($, Aj
         init: function () {
 
             $('.block_user_favorites').on('click', '#block_user_favorites_set', function () {
+
+                Log.log('Set URL to favorites: ' + window.location.href);
+
                 // Set current as favorite.
                 favoritesModule.setUrl({
+                    'action': 'add',
                     'hash': opts.hash,
-                    'url': opts.url
+                    'url': window.location.href,
                 }, $('title').text());
 
             }).on('click', '#block_user_favorites_delete', function () {
@@ -193,6 +196,8 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/log'], function ($, Aj
             }).on('click', '.fa-edit', function () {
                 // Edit a fav int the list.
                 var data = $(this).parent().parent().data();
+                data.url = null;
+                data.action = 'edit';
                 favoritesModule.setUrl(data, $(this).parent().parent().find('a').text());
             });
         }

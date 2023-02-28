@@ -70,28 +70,22 @@ class external extends external_api {
 
         require_capability('block/user_favorites:add', context_block::instance($blockid), $USER);
         $favorites = new favorites();
-        if (!empty($optional['url'])) {
+        if (!empty($optional['action']) && $optional['action'] === 'add') {
 
             if (!filter_var($optional['url'], FILTER_VALIDATE_URL)) {
                 throw new moodle_exception('Incorrect url.');
             }
 
-            $url = strtok($optional['url'], "#");
-
-            if ($hash !== md5($url)) {
-                throw new moodle_exception('Incorrect url.');
-            }
-
-            if ($optional['url'] === $url) {
-                $optional['url'] .='#';
-            }
-
             $favorites->set_by_url($optional['url'], $title);
-        } else {
 
-            // Only update title if there is no url provided.
-            $favorites->set_title($hash, $title);
+            return [
+                'result_code' => self::RESPONSE_CODE_SUCCESS,
+            ];
+
         }
+
+        // Update url title.
+        $favorites->set_title($hash, $title);
 
         return [
             'result_code' => self::RESPONSE_CODE_SUCCESS,
@@ -111,6 +105,7 @@ class external extends external_api {
                 'blockid' => new external_value(PARAM_INT, 'The ID of the block', VALUE_REQUIRED),
                 'optional' => new external_single_structure(
                     [
+                        'action' => new external_value(PARAM_RAW, 'action', VALUE_OPTIONAL),
                         'url' => new external_value(PARAM_URL, 'URL', VALUE_OPTIONAL),
                     ]
                 ),
