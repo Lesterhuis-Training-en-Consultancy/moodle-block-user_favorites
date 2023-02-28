@@ -18,13 +18,12 @@
  *
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
- * @package moodle-block-user_favorites
  * @copyright 2018 MFreak.nl
  * @author    Luuk Verhoeven
  **/
 
 /* eslint no-unused-expressions: "off", no-console:off, no-invalid-this:"off",no-script-url:"off", block-scoped-var: "off" */
-define(['jquery', 'core/ajax', 'core/notification'], function ($, Ajax, Notification) {
+define(['jquery', 'core/ajax', 'core/notification', 'core/log'], function ($, Ajax, Notification, Log) {
 
     /**
      * Opts that are possible to set.
@@ -108,12 +107,14 @@ define(['jquery', 'core/ajax', 'core/notification'], function ($, Ajax, Notifica
                 M.util.get_string('javascript:yes', 'block_user_favorites'),
                 M.util.get_string('javascript:no', 'block_user_favorites'), function () {
 
+                    Log.log('URL: ' + window.location.href);
+
                     var request = Ajax.call([{
                         methodname: 'block_user_favorites_set_url',
                         args: {
                             hash: data.hash,
                             optional: {
-                                url: data.url,
+                                url: window.location.href,
                             },
                             title: $('#favorite-url').val(),
                             blockid: opts.id,

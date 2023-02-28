@@ -72,8 +72,18 @@ class external extends external_api {
         $favorites = new favorites();
         if (!empty($optional['url'])) {
 
-            if (!filter_var($optional['url'], FILTER_VALIDATE_URL) && $hash === md5($optional['url'])) {
-                throw new \moodle_exception('Incorrect url.');
+            if (!filter_var($optional['url'], FILTER_VALIDATE_URL)) {
+                throw new moodle_exception('Incorrect url.');
+            }
+
+            $url = strtok($optional['url'], "#");
+
+            if ($hash !== md5($url)) {
+                throw new moodle_exception('Incorrect url.');
+            }
+
+            if ($optional['url'] === $url) {
+                $optional['url'] .='#';
             }
 
             $favorites->set_by_url($optional['url'], $title);
