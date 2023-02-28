@@ -113,7 +113,6 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/log'], function ($, Aj
                             hash: data.hash,
                             optional: {
                                 url: data.url,
-                                action: data.action,
                             },
                             title: $('#favorite-url').val(),
                             blockid: opts.id,
@@ -178,7 +177,6 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/log'], function ($, Aj
 
                 // Set current as favorite.
                 favoritesModule.setUrl({
-                    'action': 'add',
                     'hash': opts.hash,
                     'url': window.location.href,
                 }, $('title').text());
@@ -197,7 +195,6 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/log'], function ($, Aj
                 // Edit a fav int the list.
                 var data = $(this).parent().parent().data();
                 data.url = null;
-                data.action = 'edit';
                 favoritesModule.setUrl(data, $(this).parent().parent().find('a').text());
             });
         }
