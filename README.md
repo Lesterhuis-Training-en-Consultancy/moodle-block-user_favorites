@@ -31,6 +31,8 @@ input, bug reports and beta testing
 - Using mustache templates.
 - Fast and easy to work with.
 - Marks current page in favorites if exists.
+- Allowing saving `#hash` in the url link
+
 
 ## Installation
 
