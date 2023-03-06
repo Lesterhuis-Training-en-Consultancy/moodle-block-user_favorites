@@ -5,14 +5,13 @@ In brief, the MFreak block `user_favorites` gives the user a method to mark page
 Special thanks to Gemma Lesterhuis ([Lesterhuis Training & Consultancy](https://ltnc.nl/)) for develop & design, useful input, bug reports and beta testing
 
 ![MFreak.nl](https://MFreak.nl/logo_small.png)
-![Lesterhuis Training & Consultancy](https://MFreak.nl/logo_small_ltnc.png)
+![Lesterhuis Training & Consultancy](https://ldesignmedia.nl/logo_small_ltnc.png)
 
 * Author: Luuk Verhoeven, [MFreak.nl](https://MFreak.nl/)
 * Author: Gemma Lesterhuis, [Lesterhuis Training & Consultancy](https://ltnc.nl/)
 * Min. required: Moodle 3.5.x
 * Supports PHP:  7.2 
 
-[![Build Status](https://travis-ci.org/MFreakNL/moodle-block-user_favorites.svg?branch=master)](https://travis-ci.org/MFreakNL/moodle-block-user_favorites) 
 ![Moodle35](https://img.shields.io/badge/moodle-3.5-brightgreen.svg)
 ![Moodle36](https://img.shields.io/badge/moodle-3.6-brightgreen.svg)
 ![Moodle37](https://img.shields.io/badge/moodle-3.7-brightgreen.svg)
