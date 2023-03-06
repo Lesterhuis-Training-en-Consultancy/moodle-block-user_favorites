@@ -11,7 +11,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 $plugin->release = '3.5.7'; // [3.5.7]
 
 // Plugin version number corresponds to the latest plugin version.
-$plugin->version = 2019010100; // 2019-01-01
+$plugin->version = 2023030200; // 2023-03-02
 ```
 
 # How do I make a good changelog?
@@ -30,7 +30,15 @@ Types of changes
 * **Fixed** for any bug fixes.
 * **Security** in case of vulnerabilities.
 
+## Version (3.10.2) - 2023-03-02
+
+##### Added
+- Functionaliity to sort the user favorites usin AJAX requests
+
 ## Version (3.10.1) - 2020-11-14
+
+##### Added
+- Updated version number, no issues found.
 
 ##### Changed
 - Updated version number, no issues found.

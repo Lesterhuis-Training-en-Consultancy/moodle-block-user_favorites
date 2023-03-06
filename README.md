@@ -25,7 +25,7 @@ Special thanks to Gemma Lesterhuis ([Lesterhuis Training & Consultancy](https://
 ![Adding](https://content.screencast.com/users/LuukVerhoeven/folders/Snagit/media/0a62b7d5-c369-453f-9a63-fff5d2c24f9b/10.27.2018-12.40.GIF)
 
 ## List of features
-- Using external AJAX requests for saving and loading user favourites.
+- Using external AJAX requests for saving loading and ordering user favourites.
 - Using mustache templates.
 - Fast and easy to work with.
 - Marks current page in favorites if exists. 
