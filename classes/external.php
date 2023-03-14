@@ -41,7 +41,7 @@ use required_capability_exception;
  *
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
- * @package   moodle-block-user_favorites
+ * @package   block-user_favorites
  * @copyright 24/02/2023 LdesignMedia.nl - Luuk Verhoeven
  * @author    Hamza Tamyachte
  **/
