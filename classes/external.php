@@ -15,27 +15,36 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Webservice needed for favorites mutations
+ *
  *
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
- * @package   block-user_favorites
- * @copyright 26-10-2018 MFreak.nl
- * @author    Luuk Verhoeven
+ * @package   moodle-block-user_favorites
+ * @copyright 24/02/2023 LdesignMedia.nl - Luuk Verhoeven
+ * @author    Hamza Tamyachte
  **/
 
-defined('MOODLE_INTERNAL') || die;
+namespace block_user_favorites;
+
+use context_block;
+use dml_exception;
+use external_api;
+use external_function_parameters;
+use external_single_structure;
+use external_value;
+use moodle_exception;
+use required_capability_exception;
 
 /**
- * Class block_user_favorites_external
+ * Class external.
  *
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
- * @package   block-user_favorites
- * @copyright 26-10-2018 MFreak.nl
- * @author    Luuk Verhoeven
- */
-class block_user_favorites_external extends external_api {
+ * @package   moodle-block-user_favorites
+ * @copyright 24/02/2023 LdesignMedia.nl - Luuk Verhoeven
+ * @author    Hamza Tamyachte
+ **/
+class external extends external_api {
 
     /**
      * If everything goes according plan, we can use this code.
@@ -48,7 +57,7 @@ class block_user_favorites_external extends external_api {
      *
      * @param string $hash
      * @param string $title
-     * @param int    $blockid
+     * @param int $blockid
      * @param array $optional
      *
      * @return array
@@ -56,23 +65,26 @@ class block_user_favorites_external extends external_api {
      * @throws moodle_exception
      * @throws required_capability_exception
      */
-    public static function set_url(string $hash, string $title, int $blockid, array $optional) : array {
+    public static function set_url(string $hash, string $title, int $blockid, array $optional): array {
         global $USER;
 
         require_capability('block/user_favorites:add', context_block::instance($blockid), $USER);
-        $favorites = new \block_user_favorites\favorites();
+        $favorites = new favorites();
         if (!empty($optional['url'])) {
 
-            if (!filter_var($optional['url'], FILTER_VALIDATE_URL) && $hash === md5($optional['url'])) {
-                throw new \moodle_exception('Incorrect url.');
+            if (!filter_var($optional['url'], FILTER_VALIDATE_URL)) {
+                throw new moodle_exception('Incorrect url.');
             }
 
             $favorites->set_by_url($optional['url'], $title);
-        } else {
 
-            // Only update title if there is no url provided.
-            $favorites->set_title($hash, $title);
+            return [
+                'result_code' => self::RESPONSE_CODE_SUCCESS,
+            ];
         }
+
+        // Update url title.
+        $favorites->set_title($hash, $title);
 
         return [
             'result_code' => self::RESPONSE_CODE_SUCCESS,
@@ -84,7 +96,7 @@ class block_user_favorites_external extends external_api {
      *
      * @return external_function_parameters
      */
-    public static function set_url_parameters() : external_function_parameters {
+    public static function set_url_parameters(): external_function_parameters {
         return new external_function_parameters (
             [
                 'hash' => new external_value(PARAM_TEXT, 'URL HASH', VALUE_REQUIRED),
@@ -104,7 +116,7 @@ class block_user_favorites_external extends external_api {
      *
      * @return external_single_structure
      */
-    public static function set_url_returns() : external_single_structure {
+    public static function set_url_returns(): external_single_structure {
         return new external_single_structure(
             [
                 'result_code' => new external_value(PARAM_INT, 'The response code', VALUE_REQUIRED),
@@ -115,18 +127,18 @@ class block_user_favorites_external extends external_api {
      * Delete url
      *
      * @param string $hash
-     * @param int    $blockid
+     * @param int $blockid
      *
      * @return array
      * @throws required_capability_exception
      * @throws dml_exception
      */
-    public static function delete_url(string $hash, int $blockid) : array {
+    public static function delete_url(string $hash, int $blockid): array {
         global $USER;
 
         require_capability('block/user_favorites:delete', context_block::instance($blockid), $USER);
 
-        $favorites = new \block_user_favorites\favorites();
+        $favorites = new favorites();
         $favorites->delete_by_hash($hash);
 
         return [
@@ -139,7 +151,7 @@ class block_user_favorites_external extends external_api {
      *
      * @return external_function_parameters
      */
-    public static function delete_url_parameters() : external_function_parameters {
+    public static function delete_url_parameters(): external_function_parameters {
         return new external_function_parameters (
             [
                 'hash' => new external_value(PARAM_TEXT, 'URL HASH', VALUE_REQUIRED),
@@ -153,7 +165,7 @@ class block_user_favorites_external extends external_api {
      *
      * @return external_single_structure
      */
-    public static function delete_url_returns() : external_single_structure {
+    public static function delete_url_returns(): external_single_structure {
         return new external_single_structure(
             [
                 'result_code' => new external_value(PARAM_INT, 'The response code', VALUE_REQUIRED),
@@ -164,17 +176,17 @@ class block_user_favorites_external extends external_api {
      * Get block content
      *
      * @param string $url
-     * @param int    $blockid
+     * @param int $blockid
      *
      * @return array
      * @throws required_capability_exception
      */
-    public static function get_content(string $url, int $blockid) : array {
+    public static function get_content(string $url, int $blockid): array {
         global $PAGE, $USER;
         $context = context_block::instance($blockid);
         require_capability('block/user_favorites:view', $context, $USER);
 
-        $favorites = new \block_user_favorites\favorites();
+        $favorites = new favorites();
         $PAGE->set_context($context);
         $renderer = $PAGE->get_renderer('block_user_favorites');
 
@@ -189,7 +201,7 @@ class block_user_favorites_external extends external_api {
      *
      * @return external_function_parameters
      */
-    public static function get_content_parameters() : external_function_parameters {
+    public static function get_content_parameters(): external_function_parameters {
         return new external_function_parameters (
             [
                 'url' => new external_value(PARAM_URL, 'The current url', VALUE_REQUIRED),
@@ -203,7 +215,7 @@ class block_user_favorites_external extends external_api {
      *
      * @return external_single_structure
      */
-    public static function get_content_returns() : external_single_structure {
+    public static function get_content_returns(): external_single_structure {
         return new external_single_structure(
             [
                 'result_code' => new external_value(PARAM_INT, 'The response code', VALUE_REQUIRED),

@@ -1,9 +1,11 @@
 # Changelog
+
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 
 # Plugin version.php information
+
 ```php
 // Example
 
@@ -15,7 +17,9 @@ $plugin->version = 2019010100; // 2019-01-01
 ```
 
 # How do I make a good changelog?
+
 Guiding Principles
+
 * Changelogs are for humans, not machines.
 * There should be an entry for every single version.
 * The same types of changes should be grouped.
@@ -23,6 +27,7 @@ Guiding Principles
 * The release date of each version is displayed.
 
 Types of changes
+
 * **Added** for new features.
 * **Changed** for changes in existing functionality.
 * **Deprecated** for soon-to-be removed features.
@@ -33,37 +38,43 @@ Types of changes
 ## Version (3.10.1) - 2020-11-14
 
 ##### Changed
+
 - Updated version number, no issues found.
 
 ##### Removed
+
 - Remove `.eslintrc` `Gruntfile.js` and `packages.json` from the project causes Travis issues.
 
 ## Version (3.9.1) - 2020-07-12
 
 ##### Fix
-- GH-8 External API nested Optional url (Thanks @ewallah)
 
+- GH-8 External API nested Optional url (Thanks @ewallah)
 
 ## Version (3.9) - 2020-05-06
 
 ##### Changed
+
 - Updated version number, no issues found.
 - Minimum version PHP 7.2
 
 ## Version (3.8) - 2019-10-30
 
 ##### Changed
+
 - Updated version number, no issues found.
 
 ## Version (3.7.2) - 2019-09-17
 
 ##### Fixed
-- [ISSUE #3](https://github.com/MFreakNL/moodle-block-user_favorites/issues/3) Saving user favourites to a separate table.
+
+- [ISSUE #3](https://github.com/MFreakNL/moodle-block-user_favorites/issues/3) Saving user favourites to a separate
+  table.
 - Upgrade script `user_preference` -> `block_user_favorites` using a separate table.
 - Implement privacy provider for the new table.
-
 
 ## Version (3.5.3) - 2019-05-20
 
 ##### Added
+
 - Release of the first official stable version.

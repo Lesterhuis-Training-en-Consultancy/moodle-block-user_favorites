@@ -28,9 +28,9 @@ defined('MOODLE_INTERNAL') || die;
 $functions = [
 
     'block_user_favorites_set_url' => [
-        'classname' => 'block_user_favorites_external',
+        'classname' => \block_user_favorites\external::class,
         'methodname' => 'set_url',
-        'classpath' => 'blocks/user_favorites/externallib.php',
+        'classpath' => '',
         'description' => 'Set a url to user there favorite',
         'type' => 'write',
         'loginrequired' => true,
@@ -38,9 +38,9 @@ $functions = [
     ],
 
     'block_user_favorites_delete_url' => [
-        'classname' => 'block_user_favorites_external',
+        'classname' => \block_user_favorites\external::class,
         'methodname' => 'delete_url',
-        'classpath' => 'blocks/user_favorites/externallib.php',
+        'classpath' => '',
         'description' => 'Delete a url to user there favorite',
         'type' => 'write',
         'loginrequired' => true,
@@ -48,9 +48,9 @@ $functions = [
     ],
 
     'block_user_favorites_content' => [
-        'classname' => 'block_user_favorites_external',
+        'classname' => \block_user_favorites\external::class,
         'methodname' => 'get_content',
-        'classpath' => 'blocks/user_favorites/externallib.php',
+        'classpath' => '',
         'description' => 'Get HTML content block',
         'type' => 'read',
         'loginrequired' => true,
