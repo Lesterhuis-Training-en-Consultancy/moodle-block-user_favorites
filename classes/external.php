@@ -15,17 +15,18 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- *
+ * External libary
  *
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
- * @package   moodle-block-user_favorites
+ * @package   block-user_favorites
  * @copyright 24/02/2023 LdesignMedia.nl - Luuk Verhoeven
  * @author    Hamza Tamyachte
  **/
 
 namespace block_user_favorites;
 
+use block_user_favorites\output\output_favorites;
 use context_block;
 use dml_exception;
 use external_api;
@@ -65,6 +66,7 @@ class external extends external_api {
     public static function set_order(string $hash, int $sortorder) : array {
         $favorites = new \block_user_favorites\favorites();
         $favorites->set_order($hash, $sortorder);
+
         return [
             'result_code' => self::RESPONSE_CODE_SUCCESS,
         ];
@@ -97,21 +99,20 @@ class external extends external_api {
             ]);
     }
 
-
     /**
      * Set a url
      *
      * @param string $hash
      * @param string $title
-     * @param int $blockid
-     * @param array $optional
+     * @param int    $blockid
+     * @param array  $optional
      *
      * @return array
      * @throws dml_exception
      * @throws moodle_exception
      * @throws required_capability_exception
      */
-    public static function set_url(string $hash, string $title, int $blockid, array $optional): array {
+    public static function set_url(string $hash, string $title, int $blockid, array $optional) : array {
         global $USER;
 
         require_capability('block/user_favorites:add', context_block::instance($blockid), $USER);
@@ -142,7 +143,7 @@ class external extends external_api {
      *
      * @return external_function_parameters
      */
-    public static function set_url_parameters(): external_function_parameters {
+    public static function set_url_parameters() : external_function_parameters {
         return new external_function_parameters (
             [
                 'hash' => new external_value(PARAM_TEXT, 'URL HASH', VALUE_REQUIRED),
@@ -162,7 +163,7 @@ class external extends external_api {
      *
      * @return external_single_structure
      */
-    public static function set_url_returns(): external_single_structure {
+    public static function set_url_returns() : external_single_structure {
         return new external_single_structure(
             [
                 'result_code' => new external_value(PARAM_INT, 'The response code', VALUE_REQUIRED),
@@ -173,13 +174,13 @@ class external extends external_api {
      * Delete url
      *
      * @param string $hash
-     * @param int $blockid
+     * @param int    $blockid
      *
      * @return array
      * @throws required_capability_exception
      * @throws dml_exception
      */
-    public static function delete_url(string $hash, int $blockid): array {
+    public static function delete_url(string $hash, int $blockid) : array {
         global $USER;
 
         require_capability('block/user_favorites:delete', context_block::instance($blockid), $USER);
@@ -197,7 +198,7 @@ class external extends external_api {
      *
      * @return external_function_parameters
      */
-    public static function delete_url_parameters(): external_function_parameters {
+    public static function delete_url_parameters() : external_function_parameters {
         return new external_function_parameters (
             [
                 'hash' => new external_value(PARAM_TEXT, 'URL HASH', VALUE_REQUIRED),
@@ -211,7 +212,7 @@ class external extends external_api {
      *
      * @return external_single_structure
      */
-    public static function delete_url_returns(): external_single_structure {
+    public static function delete_url_returns() : external_single_structure {
         return new external_single_structure(
             [
                 'result_code' => new external_value(PARAM_INT, 'The response code', VALUE_REQUIRED),
@@ -222,12 +223,12 @@ class external extends external_api {
      * Get block content
      *
      * @param string $url
-     * @param int $blockid
+     * @param int    $blockid
      *
      * @return array
      * @throws required_capability_exception
      */
-    public static function get_content(string $url, int $blockid): array {
+    public static function get_content(string $url, int $blockid) : array {
         global $PAGE, $USER;
         $context = context_block::instance($blockid);
         require_capability('block/user_favorites:view', $context, $USER);
@@ -237,7 +238,7 @@ class external extends external_api {
         $renderer = $PAGE->get_renderer('block_user_favorites');
 
         return [
-            'content' => $renderer->render_favorites(new \block_user_favorites\output\output_favorites($favorites, $url)),
+            'content' => $renderer->render_favorites(new output_favorites($favorites, $url)),
             'result_code' => self::RESPONSE_CODE_SUCCESS,
         ];
     }
@@ -247,7 +248,7 @@ class external extends external_api {
      *
      * @return external_function_parameters
      */
-    public static function get_content_parameters(): external_function_parameters {
+    public static function get_content_parameters() : external_function_parameters {
         return new external_function_parameters (
             [
                 'url' => new external_value(PARAM_URL, 'The current url', VALUE_REQUIRED),
@@ -261,7 +262,7 @@ class external extends external_api {
      *
      * @return external_single_structure
      */
-    public static function get_content_returns(): external_single_structure {
+    public static function get_content_returns() : external_single_structure {
         return new external_single_structure(
             [
                 'result_code' => new external_value(PARAM_INT, 'The response code', VALUE_REQUIRED),
