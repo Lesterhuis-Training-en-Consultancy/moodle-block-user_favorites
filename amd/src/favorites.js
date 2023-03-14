@@ -127,6 +127,21 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/log'], function ($, Aj
         },
 
         /**
+         * Add or update a url
+         */
+        setOrder: function () {
+            $('ol#block_user_favorites-items li').each(function (index) {
+                Ajax.call([{
+                    methodname: 'block_user_favorites_set_order',
+                    args: {
+                        hash: $(this).data('hash'),
+                        sortorder: index
+                    }
+                }]);
+            });
+        },
+
+        /**
          * Delete a url
          *
          * @param {object} data
@@ -163,7 +178,16 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/log'], function ($, Aj
             request[0].done(function (response) {
                 debug.log(response);
                 $('.block_user_favorites .content').html(response.content);
+
+                // Re-initialize sorting on the new content!
+                $('ol#block_user_favorites-items').sortable({
+                    update: function () {
+                        favoritesModule.setOrder();
+                    }
+                });
             }).fail(Notification.exception);
+
+
         },
 
         /**
@@ -172,9 +196,6 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/log'], function ($, Aj
         init: function () {
 
             $('.block_user_favorites').on('click', '#block_user_favorites_set', function () {
-
-                Log.log('Set URL to favorites: ' + window.location.href);
-
                 // Set current as favorite.
                 favoritesModule.setUrl({
                     'hash': opts.hash,
@@ -196,6 +217,13 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/log'], function ($, Aj
                 var data = $(this).parent().parent().data();
                 data.url = null;
                 favoritesModule.setUrl(data, $(this).parent().parent().find('a').text());
+            });
+
+
+            $('ol#block_user_favorites-items').sortable({
+                update: function () {
+                    favoritesModule.setOrder();
+                }
             });
         }
     };
@@ -219,6 +247,8 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/log'], function ($, Aj
                 debug.log('Block User Favorites v1.2');
                 favoritesModule.init();
             });
+
         }
     };
+
 });
