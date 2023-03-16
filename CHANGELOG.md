@@ -37,6 +37,9 @@ Types of changes
 
 ## Version (3.10.2) - 2023-03-02
 
+##### Update
+- Move externallib.php to namespaced external API.
+
 ##### Added
 - Functionaliity to sort the user favorites usin AJAX requests
 - Allow user to mark a page with # as favorite.
