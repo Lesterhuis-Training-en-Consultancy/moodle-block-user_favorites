@@ -30,6 +30,7 @@ input, bug reports and beta testing
 - Fast and easy to work with.
 - Marks current page in favorites if exists.
 - Allow marking as favorite the url link with `#hash` (In case of marking multiple links for the same page, A web page reload needed before).
+- Make use of external API web services as in the tracker MDL-76583.
 
 ## Installation
 
