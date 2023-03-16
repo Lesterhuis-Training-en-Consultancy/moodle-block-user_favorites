@@ -39,6 +39,7 @@ Types of changes
 
 ##### Added
 - Functionaliity to sort the user favorites usin AJAX requests
+- Allow user to mark a page with # as favorite.
 
 ## Version (3.10.1) - 2020-11-14
 

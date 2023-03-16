@@ -64,7 +64,7 @@ class external extends external_api {
      * @throws dml_exception
      */
     public static function set_order(string $hash, int $sortorder) : array {
-        $favorites = new \block_user_favorites\favorites();
+        $favorites = new favorites();
         $favorites->set_order($hash, $sortorder);
 
         return [
@@ -100,7 +100,7 @@ class external extends external_api {
     }
 
     /**
-     * Set a url
+     * Set a url.
      *
      * @param string $hash
      * @param string $title

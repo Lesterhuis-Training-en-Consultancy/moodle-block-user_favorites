@@ -29,8 +29,7 @@ input, bug reports and beta testing
 - Using mustache templates.
 - Fast and easy to work with.
 - Marks current page in favorites if exists.
-- Allowing saving `#hash` in the url link
-
+- Allow marking as favorite the url link with `#hash` (In case of marking multiple links for the same page, A web page reload needed before).
 
 ## Installation
 

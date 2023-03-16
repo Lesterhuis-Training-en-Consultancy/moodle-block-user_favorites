@@ -23,7 +23,7 @@
  **/
 
 /* eslint no-unused-expressions: "off", no-console:off, no-invalid-this:"off",no-script-url:"off", block-scoped-var: "off" */
-define(['jquery', 'core/ajax', 'core/notification', 'core/log'], function($, Ajax, Notification, Log) {
+define(['jquery', 'core/ajax', 'core/notification', 'core/log'], function ($, Ajax, Notification, Log) {
 
     /**
      * Opts that are possible to set.
@@ -31,17 +31,14 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/log'], function($, Aja
      * @type {{id: number, debugjs: boolean}}
      */
     let opts = {
-        debugjs: true,
-        id: 0,
-        url: '',
-        hash: ''
+        debugjs: true, id: 0, url: '', hash: ''
     };
 
     /**
      * Set options base on listed options
      * @param {object} options
      */
-    const setOptions = function(options) {
+    const setOptions = function (options) {
         "use strict";
         let key, vartype;
         for (key in opts) {
@@ -69,26 +66,23 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/log'], function($, Aja
          * @param {object} data
          * @param {string} title
          */
-        setUrl: function(data, title) {
+        setUrl: function (data, title) {
 
-            Notification.confirm(M.util.get_string('javascript:set_title', 'block_user_favorites'),
-                '<input class="form-control" id="favorite-url" value="' + title + '">',
-                M.util.get_string('javascript:yes', 'block_user_favorites'),
-                M.util.get_string('javascript:no', 'block_user_favorites'), function() {
+            Notification.confirm(M.util
+                    .get_string('javascript:set_title', 'block_user_favorites'),
+                '<input class="form-control" id="favorite-url" value="'
+                + title + '">', M.util.get_string('javascript:yes', 'block_user_favorites'),
+                M.util.get_string('javascript:no', 'block_user_favorites'), function () {
 
                     let request = Ajax.call([{
-                        methodname: 'block_user_favorites_set_url',
-                        args: {
-                            hash: data.hash,
-                            optional: {
+                        methodname: 'block_user_favorites_set_url', args: {
+                            hash: data.hash, optional: {
                                 url: data.url,
-                            },
-                            title: $('#favorite-url').val(),
-                            blockid: opts.id,
+                            }, title: $('#favorite-url').val(), blockid: opts.id,
                         }
                     }]);
 
-                    request[0].done(function(response) {
+                    request[0].done(function (response) {
                         Log.log(response);
                         favoritesModule.reload();
                     }).fail(Notification.exception);
@@ -98,13 +92,11 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/log'], function($, Aja
         /**
          * Add or update a url
          */
-        setOrder: function() {
-            $('ol#block_user_favorites-items li').each(function(index) {
+        setOrder: function () {
+            $('ol#block_user_favorites-items li').each(function (index) {
                 Ajax.call([{
-                    methodname: 'block_user_favorites_set_order',
-                    args: {
-                        hash: $(this).data('hash'),
-                        sortorder: index
+                    methodname: 'block_user_favorites_set_order', args: {
+                        hash: $(this).data('hash'), sortorder: index
                     }
                 }]);
             });
@@ -115,17 +107,15 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/log'], function($, Aja
          *
          * @param {object} data
          */
-        remove: function(data) {
+        remove: function (data) {
 
             let request = Ajax.call([{
-                methodname: 'block_user_favorites_delete_url',
-                args: {
-                    hash: data.hash,
-                    blockid: opts.id,
+                methodname: 'block_user_favorites_delete_url', args: {
+                    hash: data.hash, blockid: opts.id,
                 }
             }]);
 
-            request[0].done(function(response) {
+            request[0].done(function (response) {
                 Log.log(response);
                 favoritesModule.reload();
             }).fail(Notification.exception);
@@ -134,23 +124,21 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/log'], function($, Aja
         /**
          * Reload the block
          */
-        reload: function() {
+        reload: function () {
 
             let request = Ajax.call([{
-                methodname: 'block_user_favorites_content',
-                args: {
-                    url: opts.url,
-                    blockid: opts.id,
+                methodname: 'block_user_favorites_content', args: {
+                    url: opts.url, blockid: opts.id,
                 }
             }]);
 
-            request[0].done(function(response) {
+            request[0].done(function (response) {
                 Log.log(response);
                 $('.block_user_favorites .content').html(response.content);
 
                 // Re-initialize sorting on the new content!
                 $('ol#block_user_favorites-items').sortable({
-                    update: function() {
+                    update: function () {
                         favoritesModule.setOrder();
                     }
                 });
@@ -161,27 +149,27 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/log'], function($, Aja
         /**
          * Init event triggers.
          */
-        init: function() {
+        init: function () {
             Log.log('Init block_user_favorites');
 
-            $('.block_user_favorites').on('click', '#block_user_favorites_set', function() {
+            $('.block_user_favorites').on('click', '#block_user_favorites_set', function () {
+
                 // Set current as favorite.
                 favoritesModule.setUrl({
-                    'hash': opts.hash,
-                    'url': window.location.href,
+                    'hash': opts.hash, 'url': window.location.href,
                 }, $('title').text());
 
-            }).on('click', '#block_user_favorites_delete', function() {
+            }).on('click', '#block_user_favorites_delete', function () {
                 // Delete current pages from favorites.
                 favoritesModule.remove({
                     'hash': opts.hash,
                 });
 
-            }).on('click', '.fa-remove', function() {
+            }).on('click', '.fa-remove', function () {
                 // Remove a fav in the list.
                 favoritesModule.remove($(this).closest('li').data());
 
-            }).on('click', '.fa-edit', function() {
+            }).on('click', '.fa-edit', function () {
                 // Edit a fav int the list.
                 let data = $(this).parent().parent().data();
                 data.url = null;
@@ -189,7 +177,7 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/log'], function($, Aja
             });
 
             $('ol#block_user_favorites-items').sortable({
-                update: function() {
+                update: function () {
                     favoritesModule.setOrder();
                 }
             });
@@ -202,7 +190,7 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/log'], function($, Aja
          *
          * @param {object} args
          */
-        initialise: function(args) {
+        initialise: function (args) {
 
             // Load the args passed from PHP.
             setOptions(args);
@@ -211,7 +199,7 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/log'], function($, Aja
             Log.log(opts.debugjs);
 
             $.noConflict();
-            $(document).ready(function() {
+            $(document).ready(function () {
                 Log.log('Block User Favorites v1.2');
                 favoritesModule.init();
             });
