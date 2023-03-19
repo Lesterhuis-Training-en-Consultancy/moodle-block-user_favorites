@@ -30,10 +30,12 @@ Types of changes
 * **Fixed** for any bug fixes.
 * **Security** in case of vulnerabilities.
 
-## Version (3.10.2) - 2023-03-02
+## Version (4.1.1) - 2023-03-02
 
 ##### Added
 - Functionaliity to sort the user favorites usin AJAX requests
+- Update version number to 4.1.1 no issues found
+- Testen on PHP 8 - no issues found
 
 ## Version (3.10.1) - 2020-11-14
 
