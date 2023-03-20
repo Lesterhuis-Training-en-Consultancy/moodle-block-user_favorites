@@ -39,6 +39,7 @@ $string['btn:delete'] = 'Delete favourite';
 $string['btn:remove'] = 'Delete favourite';
 $string['btn:add'] = 'Favourite this page';
 $string['btn:edit'] = 'Edit favourite';
+$string['btn:drag'] = 'Drag favourite';
 
 // Js.
 $string['javascript:yes'] = 'Save';

@@ -44,6 +44,52 @@ class block_user_favorites_external extends external_api {
     public const RESPONSE_CODE_SUCCESS = 200;
 
     /**
+     * Set order.
+     *
+     * @param string $hash
+     * @param int    $sortorder
+     *
+     * @return array
+     *
+     * @throws dml_exception
+     */
+    public static function set_order(string $hash, int $sortorder) : array {
+        $favorites = new \block_user_favorites\favorites();
+        $favorites->set_order($hash, $sortorder);
+        return [
+            'result_code' => self::RESPONSE_CODE_SUCCESS,
+        ];
+    }
+
+    /**
+     * Describes the input parameters for set_order.
+     *
+     * @return external_function_parameters
+     */
+    public static function set_order_parameters() : external_function_parameters {
+        return new external_function_parameters (
+            [
+                'hash' => new external_value(PARAM_TEXT, 'URL HASH', VALUE_REQUIRED),
+                'sortorder' => new external_value(PARAM_INT, 'The sortorder of the block', VALUE_REQUIRED),
+            ]
+        );
+
+    }
+
+    /**
+     * Set url return value.
+     *
+     * @return external_single_structure
+     */
+    public static function set_order_returns() : external_single_structure {
+        return new external_single_structure(
+            [
+                'result_code' => new external_value(PARAM_INT, 'The response code', VALUE_REQUIRED),
+            ]);
+    }
+
+
+    /**
      * Set a url
      *
      * @param string $hash
