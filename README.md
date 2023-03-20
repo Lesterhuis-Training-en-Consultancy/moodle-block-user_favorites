@@ -18,6 +18,8 @@ Special thanks to Gemma Lesterhuis ([Lesterhuis Training & Consultancy](https://
 ![Moodle38](https://img.shields.io/badge/moodle-3.8-brightgreen.svg)
 ![Moodle39](https://img.shields.io/badge/moodle-3.9-brightgreen.svg)
 ![Moodle310](https://img.shields.io/badge/moodle-3.10-brightgreen.svg)
+![Moodle400](https://img.shields.io/badge/moodle-4.0-brightgreen.svg)
+![Moodle401](https://img.shields.io/badge/moodle-4.1-brightgreen.svg)
 
 ## Screens
 
