@@ -15,27 +15,37 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Webservice needed for favorites mutations
+ * External libary
  *
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
- * @package   block-user_favorites
- * @copyright 26-10-2018 MFreak.nl
- * @author    Luuk Verhoeven
+ * @package   block_user_favorites
+ * @copyright 24/02/2023 LdesignMedia.nl - Luuk Verhoeven
+ * @author    Hamza Tamyachte
  **/
 
-defined('MOODLE_INTERNAL') || die;
+namespace block_user_favorites;
+
+use block_user_favorites\output\output_favorites;
+use context_block;
+use dml_exception;
+use external_api;
+use external_function_parameters;
+use external_single_structure;
+use external_value;
+use moodle_exception;
+use required_capability_exception;
 
 /**
- * Class block_user_favorites_external
+ * Class external.
  *
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
- * @package   block-user_favorites
- * @copyright 26-10-2018 MFreak.nl
- * @author    Luuk Verhoeven
- */
-class block_user_favorites_external extends external_api {
+ * @package   block_user_favorites
+ * @copyright 24/02/2023 LdesignMedia.nl - Luuk Verhoeven
+ * @author    Hamza Tamyachte
+ **/
+class external extends external_api {
 
     /**
      * If everything goes according plan, we can use this code.
@@ -54,8 +64,9 @@ class block_user_favorites_external extends external_api {
      * @throws dml_exception
      */
     public static function set_order(string $hash, int $sortorder) : array {
-        $favorites = new \block_user_favorites\favorites();
+        $favorites = new favorites();
         $favorites->set_order($hash, $sortorder);
+
         return [
             'result_code' => self::RESPONSE_CODE_SUCCESS,
         ];
@@ -88,14 +99,13 @@ class block_user_favorites_external extends external_api {
             ]);
     }
 
-
     /**
-     * Set a url
+     * Set a url.
      *
      * @param string $hash
      * @param string $title
      * @param int    $blockid
-     * @param array $optional
+     * @param array  $optional
      *
      * @return array
      * @throws dml_exception
@@ -106,19 +116,22 @@ class block_user_favorites_external extends external_api {
         global $USER;
 
         require_capability('block/user_favorites:add', context_block::instance($blockid), $USER);
-        $favorites = new \block_user_favorites\favorites();
+        $favorites = new favorites();
         if (!empty($optional['url'])) {
 
-            if (!filter_var($optional['url'], FILTER_VALIDATE_URL) && $hash === md5($optional['url'])) {
-                throw new \moodle_exception('Incorrect url.');
+            if (!filter_var($optional['url'], FILTER_VALIDATE_URL)) {
+                throw new moodle_exception('Incorrect url.');
             }
 
             $favorites->set_by_url($optional['url'], $title);
-        } else {
 
-            // Only update title if there is no url provided.
-            $favorites->set_title($hash, $title);
+            return [
+                'result_code' => self::RESPONSE_CODE_SUCCESS,
+            ];
         }
+
+        // Update url title.
+        $favorites->set_title($hash, $title);
 
         return [
             'result_code' => self::RESPONSE_CODE_SUCCESS,
@@ -172,7 +185,7 @@ class block_user_favorites_external extends external_api {
 
         require_capability('block/user_favorites:delete', context_block::instance($blockid), $USER);
 
-        $favorites = new \block_user_favorites\favorites();
+        $favorites = new favorites();
         $favorites->delete_by_hash($hash);
 
         return [
@@ -220,12 +233,12 @@ class block_user_favorites_external extends external_api {
         $context = context_block::instance($blockid);
         require_capability('block/user_favorites:view', $context, $USER);
 
-        $favorites = new \block_user_favorites\favorites();
+        $favorites = new favorites();
         $PAGE->set_context($context);
         $renderer = $PAGE->get_renderer('block_user_favorites');
 
         return [
-            'content' => $renderer->render_favorites(new \block_user_favorites\output\output_favorites($favorites, $url)),
+            'content' => $renderer->render_favorites(new output_favorites($favorites, $url)),
             'result_code' => self::RESPONSE_CODE_SUCCESS,
         ];
     }

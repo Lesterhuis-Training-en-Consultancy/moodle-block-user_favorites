@@ -24,19 +24,12 @@
  * @author     Luuk Verhoeven
  **/
 
-defined('MOODLE_INTERNAL') || die;
-
 /**
  * xmldb_block_user_favorites_upgrade
  *
  * @param int $oldversion
  *
  * @return bool
- * @throws coding_exception
- * @throws ddl_exception`
- * @throws dml_exception
- * @throws downgrade_exception
- * @throws upgrade_exception
  */
 function xmldb_block_user_favorites_upgrade($oldversion) {
 

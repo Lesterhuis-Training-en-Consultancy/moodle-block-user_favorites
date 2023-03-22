@@ -2,7 +2,8 @@
 
 In brief, the MFreak block `user_favorites` gives the user a method to mark pages as favourite.
 
-Special thanks to Gemma Lesterhuis ([Lesterhuis Training & Consultancy](https://ltnc.nl/)) for develop & design, useful input, bug reports and beta testing
+Special thanks to Gemma Lesterhuis ([Lesterhuis Training & Consultancy](https://ltnc.nl/)) for develop & design, useful
+input, bug reports and beta testing
 
 ![MFreak.nl](https://MFreak.nl/logo_small.png)
 ![Lesterhuis Training & Consultancy](https://ldesignmedia.nl/logo_small_ltnc.png)
@@ -10,7 +11,7 @@ Special thanks to Gemma Lesterhuis ([Lesterhuis Training & Consultancy](https://
 * Author: Luuk Verhoeven, [MFreak.nl](https://MFreak.nl/)
 * Author: Gemma Lesterhuis, [Lesterhuis Training & Consultancy](https://ltnc.nl/)
 * Min. required: Moodle 3.5.x
-* Supports PHP:  7.2 
+* Supports PHP:  7.2
 
 ![Moodle35](https://img.shields.io/badge/moodle-3.5-brightgreen.svg)
 ![Moodle36](https://img.shields.io/badge/moodle-3.6-brightgreen.svg)
@@ -29,17 +30,21 @@ Special thanks to Gemma Lesterhuis ([Lesterhuis Training & Consultancy](https://
 - Using external AJAX requests for saving loading and ordering user favourites.
 - Using mustache templates.
 - Fast and easy to work with.
-- Marks current page in favorites if exists. 
+- Marks current page in favorites if exists.
+- Allow marking as favorite the url link with `#hash` (In case of marking multiple links for the same page, A web page reload needed before).
+- Make use of external API web services as in the tracker MDL-76583.
 
 ## Installation
-1.  Copy this plugin to the `blocks\user_favorites` folder on the server
-2.  Login as administrator
-3.  Go to Site Administrator > Notification
-4.  Install the plugin
+
+1. Copy this plugin to the `blocks\user_favorites` folder on the server
+2. Login as administrator
+3. Go to Site Administrator > Notification
+4. Install the plugin
 
 ## Security
 
-If you discover any security related issues, please email [luuk@MFreak.nl](mailto:luuk@MFreak.nl) instead of using the issue tracker.
+If you discover any security related issues, please email [luuk@MFreak.nl](mailto:luuk@MFreak.nl) instead of using the
+issue tracker.
 
 ## License
 

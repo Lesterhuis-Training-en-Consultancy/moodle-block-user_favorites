@@ -36,8 +36,6 @@ use core_privacy\local\request\user_preference_provider;
 use core_privacy\local\request\userlist;
 use core_privacy\local\request\writer;
 
-defined('MOODLE_INTERNAL') || die;
-
 /**
  * Privacy Subsystem for block_user_favorites.
  *
@@ -65,7 +63,7 @@ class provider implements
      *
      * @return collection Return the collection of meta-data.
      */
-    public static function get_metadata(collection $collection) : collection {
+    public static function get_metadata(collection $collection): collection {
         $collection->add_user_preference('user_favorites', 'privacy:metadata:links');
         $collection->add_database_table('block_user_favorites', [
             'url' => 'privacy:metadata:favorite:url',
@@ -84,7 +82,7 @@ class provider implements
      *
      * @return  contextlist   $contextlist  The contextlist containing the list of contexts used in this plugin.
      */
-    public static function get_contexts_for_userid(int $userid) : contextlist {
+    public static function get_contexts_for_userid(int $userid): contextlist {
 
         // Is at the user context.
         $contextlist = new contextlist();
@@ -110,7 +108,7 @@ class provider implements
      * @param userlist $userlist The userlist containing the list of users who have data in this context/plugin
      *                           combination.
      */
-    public static function get_users_in_context(userlist $userlist) : void {
+    public static function get_users_in_context(userlist $userlist): void {
         $context = $userlist->get_context();
 
         if (!$context instanceof \context_user) {
@@ -140,7 +138,7 @@ class provider implements
      * @throws \dml_exception
      * @throws coding_exception
      */
-    public static function export_user_data(approved_contextlist $contextlist) : void {
+    public static function export_user_data(approved_contextlist $contextlist): void {
 
         // If the user has block_community data, then only the User context should be present so get the first context.
         $contexts = $contextlist->get_contexts();
@@ -162,7 +160,7 @@ class provider implements
         // Stored on user context.
         $user = $contextlist->get_user();
         writer::with_context($context)->export_data($subcontext,
-            (object)['links' => self::get_urls($user->id)]);
+            (object) ['links' => self::get_urls($user->id)]);
     }
 
     /**
@@ -172,7 +170,7 @@ class provider implements
      *
      * @throws \dml_exception
      */
-    public static function delete_data_for_all_users_in_context(\context $context) : void {
+    public static function delete_data_for_all_users_in_context(\context $context): void {
         global $DB;
 
         // Sanity check that context is at the User context level, then get the userid.
@@ -191,7 +189,7 @@ class provider implements
      *
      * @throws \dml_exception
      */
-    public static function delete_data_for_users(approved_userlist $userlist) : void {
+    public static function delete_data_for_users(approved_userlist $userlist): void {
         global $DB;
 
         $context = $userlist->get_context();
@@ -208,7 +206,7 @@ class provider implements
      *
      * @throws \dml_exception
      */
-    public static function delete_data_for_user(approved_contextlist $contextlist) : void {
+    public static function delete_data_for_user(approved_contextlist $contextlist): void {
         global $DB;
 
         // If the user has block_community data, then only the User context should be present so get the first context.
@@ -233,7 +231,7 @@ class provider implements
      *
      * @throws coding_exception
      */
-    public static function export_user_preferences(int $userid) : void {
+    public static function export_user_preferences(int $userid): void {
         $preference = get_user_preferences('user_favorites', null, $userid);
         if (isset($preference)) {
             writer::export_user_preference('user_favorites', '',
@@ -256,4 +254,5 @@ class provider implements
         // Todo convert timestamp to readable format.
         return $favorites->get_all();
     }
+
 }

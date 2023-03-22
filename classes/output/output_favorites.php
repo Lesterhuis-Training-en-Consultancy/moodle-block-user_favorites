@@ -33,8 +33,6 @@ use renderer_base;
 use stdClass;
 use templatable;
 
-defined('MOODLE_INTERNAL') || die;
-
 /**
  * Class output_favorites
  *
@@ -56,7 +54,7 @@ class output_favorites implements renderable, templatable {
      * admin_catalog_product_output constructor.
      *
      * @param favorites $favorites
-     * @param string    $currenturl
+     * @param string $currenturl
      */
     public function __construct(favorites $favorites, string $currenturl = '') {
         $this->favorites = $favorites;
@@ -74,7 +72,7 @@ class output_favorites implements renderable, templatable {
      * @return stdClass
      * @throws dml_exception
      */
-    public function export_for_template(renderer_base $output) : stdClass {
+    public function export_for_template(renderer_base $output): stdClass {
         global $PAGE;
         $data = [];
         $hascurrenturl = false;
@@ -97,11 +95,12 @@ class output_favorites implements renderable, templatable {
             }
         }
 
-        return (object)[
+        return (object) [
             'data' => new \ArrayIterator($data),
             'has_favorites' => $this->favorites->has_favorites(),
             'hash' => md5($PAGE->url->out()),
             'hascurrenturl' => $hascurrenturl,
         ];
     }
+
 }

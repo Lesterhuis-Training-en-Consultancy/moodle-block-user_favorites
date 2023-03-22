@@ -24,14 +24,6 @@
  * @author     Luuk Verhoeven
  **/
 
-defined('MOODLE_INTERNAL') || die;
-
-/**
- * Class block_user_favorites_edit_form
- *
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @copyright  26-10-2018 MFreak.nl
- */
 class block_user_favorites_edit_form extends block_edit_form {
 
     /**
@@ -41,7 +33,7 @@ class block_user_favorites_edit_form extends block_edit_form {
      *
      * @throws coding_exception
      */
-    protected function specific_definition($mform) : void {
+    protected function specific_definition($mform): void {
 
         $mform->addElement('header', 'configheader', get_string('blocksettings', 'block'));
 
@@ -50,4 +42,5 @@ class block_user_favorites_edit_form extends block_edit_form {
         $mform->setDefault('config_title', get_string('pluginname', 'block_user_favorites'));
         $mform->setType('config_title', PARAM_TEXT);
     }
+
 }
