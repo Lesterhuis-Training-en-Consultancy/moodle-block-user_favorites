@@ -24,6 +24,15 @@
  * @author     Luuk Verhoeven
  **/
 
+/**
+ * Class block_user_favorites_edit_form
+ *
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ *
+ * @package    block_user_favorites
+ * @copyright  26-10-2018 MFreak.nl
+ * @author     Luuk Verhoeven
+ */
 class block_user_favorites_edit_form extends block_edit_form {
 
     /**
