@@ -23,7 +23,7 @@
  **/
 
 /* eslint no-unused-expressions: "off", no-console:off, no-invalid-this:"off",no-script-url:"off", block-scoped-var: "off" */
-define(['jquery', 'core/ajax', 'core/notification', 'core/log'], function ($, Ajax, Notification, Log) {
+define(['jquery', 'core/ajax', 'core/notification', 'core/log' , 'jqueryui'], function ($, Ajax, Notification, Log) {
 
     /**
      * Opts that are possible to set.

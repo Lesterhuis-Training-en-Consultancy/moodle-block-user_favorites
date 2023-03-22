@@ -58,9 +58,9 @@ $functions = [
     ],
 
     'block_user_favorites_set_order' => [
-        'classname' => 'block_user_favorites_external',
+        'classname' => \block_user_favorites\external::class,
         'methodname' => 'set_order',
-        'classpath' => 'blocks/user_favorites/externallib.php',
+        'classpath' => '',
         'description' => 'Set a order to user there favorite',
         'type' => 'write',
         'loginrequired' => true,
