@@ -23,7 +23,8 @@
  **/
 
 /* eslint no-unused-expressions: "off", no-console:off, no-invalid-this:"off",no-script-url:"off", block-scoped-var: "off" */
-define(['jquery', 'core/ajax', 'core/notification', 'core/log' , 'jqueryui'], function ($, Ajax, Notification, Log) {
+define(['jquery', 'core/ajax', 'core/notification', 'core/log', 'core/sortable_list'],
+function ($, Ajax, Notification, Log, SortableList) {
 
     /**
      * Opts that are possible to set.
@@ -137,10 +138,9 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/log' , 'jqueryui'], fu
                 $('.block_user_favorites .content').html(response.content);
 
                 // Re-initialize sorting on the new content!
-                $('ol#block_user_favorites-items').sortable({
-                    update: function () {
-                        favoritesModule.setOrder();
-                    }
+                new SortableList('ol#block_user_favorites-items');
+                $('ol#block_user_favorites-items > li').on(SortableList.EVENTS.DROP, function() {
+                    favoritesModule.setOrder();
                 });
             }).fail(Notification.exception);
 
@@ -176,10 +176,9 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/log' , 'jqueryui'], fu
                 favoritesModule.setUrl(data, $(this).parent().parent().find('a').text());
             });
 
-            $('ol#block_user_favorites-items').sortable({
-                update: function () {
-                    favoritesModule.setOrder();
-                }
+            new SortableList('ol#block_user_favorites-items');
+            $('ol#block_user_favorites-items > li').on(SortableList.EVENTS.DROP, function() {
+                favoritesModule.setOrder();
             });
         }
     };
