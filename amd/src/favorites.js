@@ -66,6 +66,11 @@ function ($, Ajax, Notification, Log, SortableList) {
             }
             evt.stopPropagation();
         });
+        $('ol#block_user_favorites-items > li').on(SortableList.EVENTS.DRAGSTART, (evt, info) => {
+            setTimeout(() => {
+                $('.sortable-list-is-dragged').width(info.element.width());
+            }, 501);
+        });
     };
 
     const favoritesModule = {
