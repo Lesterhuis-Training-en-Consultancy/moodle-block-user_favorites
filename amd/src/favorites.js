@@ -59,6 +59,15 @@ function ($, Ajax, Notification, Log, SortableList) {
         }
     };
 
+    const attachDragDropHandlers = function () {
+        $('ol#block_user_favorites-items > li').on(SortableList.EVENTS.DRAGEND, function(evt, info) {
+            if (info.positionChanged) {
+                favoritesModule.setOrder();
+            }
+            evt.stopPropagation();
+        });
+    };
+
     const favoritesModule = {
 
         /**
@@ -136,12 +145,8 @@ function ($, Ajax, Notification, Log, SortableList) {
             request[0].done(function (response) {
                 Log.log(response);
                 $('.block_user_favorites .content').html(response.content);
-
-                // Re-initialize sorting on the new content!
-                new SortableList('ol#block_user_favorites-items');
-                $('ol#block_user_favorites-items > li').on(SortableList.EVENTS.DROP, function() {
-                    favoritesModule.setOrder();
-                });
+                // Re-attach drag/drop callback on the new content to ensure sorting still works after content refresh
+                attachDragDropHandlers();
             }).fail(Notification.exception);
 
         },
@@ -175,11 +180,10 @@ function ($, Ajax, Notification, Log, SortableList) {
                 data.url = null;
                 favoritesModule.setUrl(data, $(this).parent().parent().find('a').text());
             });
-
+            // Instantiate new SortableList component. this only needs to happen once (i.e. not on refresh again).
             new SortableList('ol#block_user_favorites-items');
-            $('ol#block_user_favorites-items > li').on(SortableList.EVENTS.DROP, function() {
-                favoritesModule.setOrder();
-            });
+            // Attach the drag/drop callbacks
+            attachDragDropHandlers();
         }
     };
 
