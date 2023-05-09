@@ -23,7 +23,8 @@
  **/
 
 /* eslint no-unused-expressions: "off", no-console:off, no-invalid-this:"off",no-script-url:"off", block-scoped-var: "off" */
-define(['jquery', 'core/ajax', 'core/notification', 'core/log' , 'jqueryui'], function ($, Ajax, Notification, Log) {
+define(['jquery', 'core/ajax', 'core/notification', 'core/log', 'core/sortable_list'],
+function ($, Ajax, Notification, Log, SortableList) {
 
     /**
      * Opts that are possible to set.
@@ -56,6 +57,20 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/log' , 'jqueryui'], fu
                 // Skip all other types.
             }
         }
+    };
+
+    const attachDragDropHandlers = function () {
+        $('ol#block_user_favorites-items > li').on(SortableList.EVENTS.DRAGEND, function(evt, info) {
+            if (info.positionChanged) {
+                favoritesModule.setOrder();
+            }
+            evt.stopPropagation();
+        });
+        $('ol#block_user_favorites-items > li').on(SortableList.EVENTS.DRAGSTART, (evt, info) => {
+            setTimeout(() => {
+                $('.sortable-list-is-dragged').width(info.element.width());
+            }, 501);
+        });
     };
 
     const favoritesModule = {
@@ -135,13 +150,8 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/log' , 'jqueryui'], fu
             request[0].done(function (response) {
                 Log.log(response);
                 $('.block_user_favorites .content').html(response.content);
-
-                // Re-initialize sorting on the new content!
-                $('ol#block_user_favorites-items').sortable({
-                    update: function () {
-                        favoritesModule.setOrder();
-                    }
-                });
+                // Re-attach drag/drop callback on the new content to ensure sorting still works after content refresh
+                attachDragDropHandlers();
             }).fail(Notification.exception);
 
         },
@@ -175,12 +185,10 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/log' , 'jqueryui'], fu
                 data.url = null;
                 favoritesModule.setUrl(data, $(this).parent().parent().find('a').text());
             });
-
-            $('ol#block_user_favorites-items').sortable({
-                update: function () {
-                    favoritesModule.setOrder();
-                }
-            });
+            // Instantiate new SortableList component. this only needs to happen once (i.e. not on refresh again).
+            new SortableList('ol#block_user_favorites-items');
+            // Attach the drag/drop callbacks
+            attachDragDropHandlers();
         }
     };
 
