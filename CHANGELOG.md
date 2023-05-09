@@ -35,6 +35,11 @@ Types of changes
 * **Fixed** for any bug fixes.
 * **Security** in case of vulnerabilities.
 
+## Version (4.1.2) - 2023-05-09
+
+##### Update
+- Fix Block drawer breaks in Moodle 4.1 #16 thanks to @stopfstedt for the contribution (https://github.com/Lesterhuis-Training-en-Consultancy/moodle-block-user_favorites/releases/tag/v4.1.2)
+
 ## Version (4.1.1) - 2023-03-02
 
 ##### Update
