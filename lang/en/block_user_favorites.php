@@ -24,10 +24,10 @@
  * @author     Luuk Verhoeven
  **/
 
-$string['user_favorites:addinstance'] = 'Add a new block for user favourites';
-$string['user_favorites:myaddinstance'] = 'Add a new Block for user favourites to my moodle';
+$string['user_favorites:addinstance'] = 'Add a new user favourites block';
+$string['user_favorites:myaddinstance'] = 'Add a new user favourites block to my moodle';
 $string['pluginname'] = 'User favourites';
-$string['description'] = 'The block favourites allows the user to save there favourite pages';
+$string['description'] = 'The user favourites block allows the user to save their favourite pages';
 
 // Access.
 $string['user_favorites:add'] = 'Add favourite';
@@ -50,8 +50,8 @@ $string['javascript:set_title'] = 'Set title of the favourite';
 $string['privacy:metadata:links'] = 'Links stored by the user favourites plugin';
 
 // Privacy provider.
-$string['privacy:metadata:favorite:url'] = 'The url of the favorite link';
-$string['privacy:metadata:favorite:hash'] = 'The hash (identifier) of the favorite link';
-$string['privacy:metadata:favorite:title'] = 'The title of the favorite link';
-$string['privacy:metadata:favorite:created_at'] = 'The timestamp the link is created';
-$string['privacy:metadata:favorite'] = 'Information about the user\'s favorites';
+$string['privacy:metadata:favorite:url'] = 'The url of the favourite link';
+$string['privacy:metadata:favorite:hash'] = 'The hash (identifier) of the favourite link';
+$string['privacy:metadata:favorite:title'] = 'The title of the favourite link';
+$string['privacy:metadata:favorite:created_at'] = 'The timestamp the favourite link is created';
+$string['privacy:metadata:favorite'] = 'Information about the user\'s favourites';
