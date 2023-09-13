@@ -33,6 +33,7 @@ $string['description'] = 'The user favourites block allows the user to save thei
 $string['user_favorites:add'] = 'Add favourite';
 $string['user_favorites:delete'] = 'Delete favourite';
 $string['user_favorites:view'] = 'View favorites';
+$string['user_favorites:edit'] = 'Edit favorites';
 
 // Buttons.
 $string['btn:delete'] = 'Delete favourite';
