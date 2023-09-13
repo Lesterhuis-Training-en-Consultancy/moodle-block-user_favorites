@@ -64,6 +64,10 @@ class external extends external_api {
      * @throws dml_exception
      */
     public static function set_order(string $hash, int $sortorder) : array {
+        global $USER;
+
+        require_capability('block/user_favorites:edit', context_user::instance($USER->id), $USER);
+
         // Parameter validation.
         $params = self::validate_parameters(self::set_order_parameters(), array('hash' => $hash, 'sortorder' => $sortorder));
 

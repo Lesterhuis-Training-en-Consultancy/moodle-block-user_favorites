@@ -63,6 +63,19 @@ $capabilities = [
         ],
     ],
 
+    'block/user_favorites:edit' => [
+        'riskbitmask' => RISK_SPAM | RISK_XSS,
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_BLOCK,
+        'archetypes' => [
+            'teacher' => CAP_ALLOW,
+            'editingteacher' => CAP_ALLOW,
+            'manager' => CAP_ALLOW,
+            'student' => CAP_ALLOW,
+            'user' => CAP_ALLOW,
+        ],
+    ],
+
     'block/user_favorites:delete' => [
         'riskbitmask' => RISK_SPAM | RISK_XSS,
 
