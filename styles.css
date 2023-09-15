@@ -19,7 +19,7 @@
     padding: 2px 0;
 }
 
-.fa-control {
+#block_user_favorites-items .fa-control {
     float: right;
     width: 58px;
 }
