@@ -33,6 +33,7 @@ $string['description'] = 'Je eigen favorieten lijst samenstellen.';
 $string['user_favorites:add'] = 'Favoriet toevoegen';
 $string['user_favorites:delete'] = 'Verwijder favoriet';
 $string['user_favorites:view'] = 'Bekijk favoriet';
+$string['user_favorites:edit'] = 'Bewerk favoriet';
 
 // Buttons.
 $string['btn:delete'] = 'Verwijder favoriet';

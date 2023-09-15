@@ -64,8 +64,15 @@ class external extends external_api {
      * @throws dml_exception
      */
     public static function set_order(string $hash, int $sortorder) : array {
+        global $USER;
+
+        require_capability('block/user_favorites:edit', context_user::instance($USER->id), $USER);
+
+        // Parameter validation.
+        $params = self::validate_parameters(self::set_order_parameters(), array('hash' => $hash, 'sortorder' => $sortorder));
+
         $favorites = new favorites();
-        $favorites->set_order($hash, $sortorder);
+        $favorites->set_order($params['hash'], $params['sortorder']);
 
         return [
             'result_code' => self::RESPONSE_CODE_SUCCESS,
@@ -115,15 +122,18 @@ class external extends external_api {
     public static function set_url(string $hash, string $title, int $blockid, array $optional) : array {
         global $USER;
 
-        require_capability('block/user_favorites:add', context_block::instance($blockid), $USER);
-        $favorites = new favorites();
-        if (!empty($optional['url'])) {
+        // Parameter validation.
+        $params = self::validate_parameters(self::set_url_parameters(), array('hash' => $hash, 'title' => $title, 'blockid' => $blockid, 'optional' => $optional));
 
-            if (!filter_var($optional['url'], FILTER_VALIDATE_URL)) {
+        require_capability('block/user_favorites:add', context_block::instance($params['blockid']), $USER);
+        $favorites = new favorites();
+        if (!empty($params['optional']['url'])) {
+
+            if (!filter_var($params['optional']['url'], FILTER_VALIDATE_URL)) {
                 throw new moodle_exception('Incorrect url.');
             }
 
-            $favorites->set_by_url($optional['url'], $title);
+            $favorites->set_by_url($params['optional']['url'], $params['title']);
 
             return [
                 'result_code' => self::RESPONSE_CODE_SUCCESS,
@@ -131,7 +141,7 @@ class external extends external_api {
         }
 
         // Update url title.
-        $favorites->set_title($hash, $title);
+        $favorites->set_title($params['hash'], $params['title']);
 
         return [
             'result_code' => self::RESPONSE_CODE_SUCCESS,
@@ -183,10 +193,13 @@ class external extends external_api {
     public static function delete_url(string $hash, int $blockid) : array {
         global $USER;
 
-        require_capability('block/user_favorites:delete', context_block::instance($blockid), $USER);
+        // Parameter validation.
+        $params = self::validate_parameters(self::delete_url_parameters(), array('hash' => $hash, 'blockid' => $blockid));
+
+        require_capability('block/user_favorites:delete', context_block::instance($params['blockid']), $USER);
 
         $favorites = new favorites();
-        $favorites->delete_by_hash($hash);
+        $favorites->delete_by_hash($params['hash']);
 
         return [
             'result_code' => self::RESPONSE_CODE_SUCCESS,
@@ -230,7 +243,11 @@ class external extends external_api {
      */
     public static function get_content(string $url, int $blockid) : array {
         global $PAGE, $USER;
-        $context = context_block::instance($blockid);
+
+        // Parameter validation.
+        $params = self::validate_parameters(self::get_content_parameters(), array('url' => $url, 'blockid' => $blockid));
+
+        $context = context_block::instance($params['blockid']);
         require_capability('block/user_favorites:view', $context, $USER);
 
         $favorites = new favorites();
@@ -238,7 +255,7 @@ class external extends external_api {
         $renderer = $PAGE->get_renderer('block_user_favorites');
 
         return [
-            'content' => $renderer->render_favorites(new output_favorites($favorites, $url)),
+            'content' => $renderer->render_favorites(new output_favorites($favorites, $params['url'])),
             'result_code' => self::RESPONSE_CODE_SUCCESS,
         ];
     }
