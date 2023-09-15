@@ -55,3 +55,4 @@ The GNU GENERAL PUBLIC LICENSE. Please see [License File](LICENSE) for more info
 Contributions are welcome and will be fully credited. We accept contributions via Pull Requests on Github.
 
 - Thanks for the inspiration [block_user_bookmarks](https://moodle.org/plugins/block_user_bookmarks)
+- Thank you to @stopfstedt, 2gjb2048, and @SashaAnastasi for your valuable contributions to enhancing the plugin.
