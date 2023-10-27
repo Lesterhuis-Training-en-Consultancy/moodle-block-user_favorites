@@ -10,17 +10,10 @@ input, bug reports and beta testing
 
 * Author: Luuk Verhoeven, [MFreak.nl](https://MFreak.nl/)
 * Author: Gemma Lesterhuis, [Lesterhuis Training & Consultancy](https://ltnc.nl/)
-* Min. required: Moodle 3.5.x
-* Supports PHP:  7.2
+* Min. required: Moodle 4.2
+* Supports PHP:  7.4
 
-![Moodle35](https://img.shields.io/badge/moodle-3.5-brightgreen.svg)
-![Moodle36](https://img.shields.io/badge/moodle-3.6-brightgreen.svg)
-![Moodle37](https://img.shields.io/badge/moodle-3.7-brightgreen.svg)
-![Moodle38](https://img.shields.io/badge/moodle-3.8-brightgreen.svg)
-![Moodle39](https://img.shields.io/badge/moodle-3.9-brightgreen.svg)
-![Moodle310](https://img.shields.io/badge/moodle-3.10-brightgreen.svg)
-![Moodle400](https://img.shields.io/badge/moodle-4.0-brightgreen.svg)
-![Moodle401](https://img.shields.io/badge/moodle-4.1-brightgreen.svg)
+![Moodle402](https://img.shields.io/badge/moodle-4.2-brightgreen.svg)
 
 ## Screens
 
@@ -40,6 +33,14 @@ input, bug reports and beta testing
 2. Login as administrator
 3. Go to Site Administrator > Notification
 4. Install the plugin
+
+
+### Changelog
+
+##### 4.2 (27-10-2023)
+* Updated external_api namespace loading from core_external.
+* No longer backwards compatible.
+
 
 ## Security
 
