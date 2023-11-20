@@ -39,7 +39,7 @@ $capabilities = [
     ],
 
     'block/user_favorites:addinstance' => [
-        'riskbitmask' => RISK_SPAM | RISK_XSS,
+        'riskbitmask' => RISK_XSS,
         'captype' => 'write',
         'contextlevel' => CONTEXT_BLOCK,
         'archetypes' => [
@@ -51,7 +51,6 @@ $capabilities = [
     ],
 
     'block/user_favorites:add' => [
-        'riskbitmask' => RISK_SPAM | RISK_XSS,
         'captype' => 'write',
         'contextlevel' => CONTEXT_BLOCK,
         'archetypes' => [
@@ -64,7 +63,6 @@ $capabilities = [
     ],
 
     'block/user_favorites:edit' => [
-        'riskbitmask' => RISK_SPAM | RISK_XSS,
         'captype' => 'write',
         'contextlevel' => CONTEXT_BLOCK,
         'archetypes' => [
@@ -77,8 +75,6 @@ $capabilities = [
     ],
 
     'block/user_favorites:delete' => [
-        'riskbitmask' => RISK_SPAM | RISK_XSS,
-
         'captype' => 'write',
         'contextlevel' => CONTEXT_BLOCK,
         'archetypes' => [
@@ -91,8 +87,6 @@ $capabilities = [
     ],
 
     'block/user_favorites:view' => [
-        'riskbitmask' => RISK_SPAM | RISK_XSS,
-
         'captype' => 'read',
         'contextlevel' => CONTEXT_BLOCK,
         'archetypes' => [
@@ -102,6 +96,5 @@ $capabilities = [
             'student' => CAP_ALLOW,
             'user' => CAP_ALLOW,
         ],
-        'clonepermissionsfrom' => 'moodle/site:manageblocks',
     ],
 ];
