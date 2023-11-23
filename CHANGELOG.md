@@ -35,10 +35,13 @@ Types of changes
 * **Fixed** for any bug fixes.
 * **Security** in case of vulnerabilities.
 
-## Version (4.1.2) - 2023-05-09
+## Version (4.1.3) - 2023-12-20
 
 ##### Update
 - Fix incorrect security risk flags on the capabilites.
+- Fix issuue moving favorites #23
+
+## Version (4.1.2) - 2023-05-09
 
 ##### Update
 - Fix Block drawer breaks in Moodle 4.1 #16 thanks to @stopfstedt for the contribution (https://github.com/Lesterhuis-Training-en-Consultancy/moodle-block-user_favorites/releases/tag/v4.1.2)
