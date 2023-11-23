@@ -43,7 +43,7 @@ Types of changes
 
 ##### Update
 - Fix incorrect security risk flags on the capabilites.
-- Fix issuue moving favorites #23
+- Fix issue moving favorites #23
 
 ## Version (4.1.2) - 2023-05-09
 
@@ -56,7 +56,7 @@ Types of changes
 - Move externallib.php to namespaced external API.
 
 ##### Added
-- Functionaliity to sort the user favorites usin AJAX requests
+- Functionality to sort the user favorites usin AJAX requests
 - Update version number to 4.1.1 no issues found
 - Testen on PHP 8 - no issues found
 - Allow user to mark a page with # as favorite.
