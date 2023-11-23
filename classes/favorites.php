@@ -45,8 +45,6 @@ class favorites {
      * favorites constructor.
      *
      * @param int $userid
-     *
-     * @throws \coding_exception
      */
     public function __construct(int $userid = 0) {
         global $USER;
@@ -65,7 +63,6 @@ class favorites {
      * @param int $userid
      *
      * @return int
-     * @throws dml_exception
      */
     public function update_favorite(\stdClass $favorite, string $hash, int $userid): int {
         global $DB;
@@ -93,41 +90,45 @@ class favorites {
     }
 
     /**
-     * Set a url
+     * Set an url
      * This function will update if exists or create a new favorite.
      *
      * @param string $url
      * @param string $title
      * @param int $sort
-     *
-     * @throws dml_exception
      */
     public function set_by_url(string $url, string $title = '', int $sort = 0): void {
         global $USER;
         $hash = md5($url);
 
-        $this->update_favorite((object) [
-            'url' => $url,
-            'title' => $title,
-            'sortorder' => $sort,
-            'hash' => $hash,
-        ], $hash, $USER->id);
+        $this->update_favorite(
+            (object) [
+                'url' => $url,
+                'title' => $title,
+                'sortorder' => $sort,
+                'hash' => $hash,
+            ],
+            $hash,
+            $USER->id
+        );
     }
 
     /**
      * Set order of favorite.
      *
      * @param string $hash
-     * @param int    $sortorder
-     *
-     * @throws dml_exception
+     * @param int $sortorder
      */
-    public function set_order(string $hash, int $sortorder = 0) : void {
+    public function set_order(string $hash, int $sortorder = 0): void {
         global $USER;
 
-        $this->update_favorite((object)[
-            'sortorder' => $sortorder
-        ], $hash, $USER->id);
+        $this->update_favorite(
+            (object) [
+                'sortorder' => $sortorder,
+            ],
+            $hash,
+            $USER->id
+        );
     }
 
     /**
@@ -153,6 +154,7 @@ class favorites {
      */
     public function get_all() {
         global $DB;
+
         return $DB->get_records('block_user_favorites', ['userid' => $this->userid], 'sortorder ASC', '*');
     }
 
@@ -160,12 +162,17 @@ class favorites {
      * Check if it has favorites.
      *
      * @return bool
-     * @throws dml_exception
      */
     public function has_favorites(): bool {
         global $DB;
-        $record = $DB->get_records('block_user_favorites', ['userid' => $this->userid], '', 'id',
-            0, 1);
+        $record = $DB->get_records(
+            'block_user_favorites',
+            ['userid' => $this->userid],
+            '',
+            'id',
+            0,
+            1
+        );
 
         return !empty($record);
     }
@@ -175,14 +182,16 @@ class favorites {
      *
      * @param string $hash
      * @param string $title
-     *
-     * @throws dml_exception
      */
     public function set_title(string $hash, string $title): void {
 
-        $this->update_favorite((object) [
-            'title' => $title,
-        ], $hash, $this->userid);
+        $this->update_favorite(
+            (object) [
+                'title' => $title,
+            ],
+            $hash,
+            $this->userid
+        );
     }
 
 }

@@ -90,7 +90,7 @@ class output_favorites implements renderable, templatable {
                     'class' => ($this->currenturl == $favorite->url) ? 'active' : '',
                     'url' => $favorite->url,
                     'hash' => $favorite->hash,
-                    'sortorder' => $favorite->sortorder
+                    'sortorder' => $favorite->sortorder,
                 ];
             }
         }
