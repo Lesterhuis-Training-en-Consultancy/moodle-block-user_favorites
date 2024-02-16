@@ -35,12 +35,9 @@ input, bug reports and beta testing
 4. Install the plugin
 
 
-### Changelog
+## Changelog
 
-##### 4.2 (27-10-2023)
-* Updated external_api namespace loading from core_external.
-* No longer backwards compatible.
-
+See [Changelog](CHANGELOG.md) file for details
 
 ## Security
 
