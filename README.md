@@ -1,14 +1,14 @@
 ## Moodle block for marking your favourite pages as bookmarks
 
-In brief, the MFreak block `user_favorites` gives the user a method to mark pages as favourite.
+In brief, the ldesignmedia block `user_favorites` gives the user a method to mark pages as favourite.
 
 Special thanks to Gemma Lesterhuis ([Lesterhuis Training & Consultancy](https://ltnc.nl/)) for develop & design, useful
 input, bug reports and beta testing
 
-![MFreak.nl](https://MFreak.nl/logo_small.png)
+![ldesignmedia.nl](https://ldesignmedia.nl/logo_small.png)
 ![Lesterhuis Training & Consultancy](https://ldesignmedia.nl/logo_small_ltnc.png)
 
-* Author: Luuk Verhoeven, [MFreak.nl](https://MFreak.nl/)
+* Author: Luuk Verhoeven, [ldesignmedia.nl](https://ldesignmedia.nl/)
 * Author: Gemma Lesterhuis, [Lesterhuis Training & Consultancy](https://ltnc.nl/)
 * Min. required: Moodle 4.2
 * Supports PHP:  7.4
@@ -41,7 +41,7 @@ See [Changelog](CHANGELOG.md) file for details
 
 ## Security
 
-If you discover any security related issues, please email [luuk@MFreak.nl](mailto:luuk@MFreak.nl) instead of using the
+If you discover any security related issues, please email [luuk@ldesignmedia.nl](mailto:luuk@ldesignmedia.nl) instead of using the
 issue tracker.
 
 ## License
