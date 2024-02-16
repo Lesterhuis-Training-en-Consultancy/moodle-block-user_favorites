@@ -14,7 +14,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Tested in Moodle 3.5
+ * Tested in Moodle 3.5 / 3.9 / 4.2 / 4.3
  *
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  *
@@ -164,7 +164,7 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/log', 'core/sortable_l
                 request[0].done(function(response) {
                     Log.log(response);
                     $('.block_user_favorites .content').html(response.content);
-                    // Re-attach drag/drop callback on the new content to ensure sorting still works after content refresh
+                    // Re-attach drag/drop callback on the new content to ensure sorting still works after content refresh.
                     attachDragDropHandlers();
                 }).fail(Notification.exception);
 
@@ -204,7 +204,7 @@ define(['jquery', 'core/ajax', 'core/notification', 'core/log', 'core/sortable_l
                 });
                 // Instantiate new SortableList component. this only needs to happen once (i.e. not on refresh again).
                 new SortableList('ol#block_user_favorites-items');
-                // Attach the drag/drop callbacks
+                // Attach the drag/drop callbacks.
                 attachDragDropHandlers();
             }
         };

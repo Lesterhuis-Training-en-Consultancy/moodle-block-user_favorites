@@ -26,8 +26,8 @@
 
 defined('MOODLE_INTERNAL') || die;
 
-$plugin->version = 2023112200;
+$plugin->version = 2024021600;
 $plugin->requires = 2023042401;
 $plugin->component = 'block_user_favorites';
-$plugin->release = '4.2.0';
+$plugin->release = '4.3.0';
 $plugin->maturity = MATURITY_STABLE;

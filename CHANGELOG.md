@@ -35,6 +35,9 @@ Types of changes
 * **Fixed** for any bug fixes.
 * **Security** in case of vulnerabilities.
 
+## Version (4.3.0) - 2024-02-16
+- Tested and refactored for Moodle (LMS) 4.3
+
 ## Version (4.2.0) - 2023-12-20
 - Branche 4.2 for just 4.2 use
 - Validation M4.2
