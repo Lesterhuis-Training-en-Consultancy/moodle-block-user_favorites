@@ -1,14 +1,14 @@
 ## Moodle block for marking your favourite pages as bookmarks
 
-In brief, the MFreak block `user_favorites` gives the user a method to mark pages as favourite.
+In brief, the ldesignmedia block `user_favorites` gives the user a method to mark pages as favourite.
 
 Special thanks to Gemma Lesterhuis ([Lesterhuis Training & Consultancy](https://ltnc.nl/)) for develop & design, useful
 input, bug reports and beta testing
 
-![MFreak.nl](https://MFreak.nl/logo_small.png)
+![ldesignmedia.nl](https://ldesignmedia.nl/logo_small.png)
 ![Lesterhuis Training & Consultancy](https://ldesignmedia.nl/logo_small_ltnc.png)
 
-* Author: Luuk Verhoeven, [MFreak.nl](https://MFreak.nl/)
+* Author: Luuk Verhoeven, [ldesignmedia.nl](https://ldesignmedia.nl/)
 * Author: Gemma Lesterhuis, [Lesterhuis Training & Consultancy](https://ltnc.nl/)
 * Min. required: Moodle 4.2
 * Supports PHP:  7.4
@@ -16,8 +16,7 @@ input, bug reports and beta testing
 ![Moodle402](https://img.shields.io/badge/moodle-4.2-brightgreen.svg)
 
 ## Screens
-
-![Adding](https://content.screencast.com/users/LuukVerhoeven/folders/Snagit/media/0a62b7d5-c369-453f-9a63-fff5d2c24f9b/10.27.2018-12.40.GIF)
+![10 27 2018-12 40](https://github.com/Lesterhuis-Training-en-Consultancy/moodle-block-user_favorites/assets/995760/2f2c2157-dbfa-4a17-9c5b-cd77ba55070c)
 
 ## List of features
 - Using external AJAX requests for saving loading and ordering user favourites.
@@ -35,16 +34,13 @@ input, bug reports and beta testing
 4. Install the plugin
 
 
-### Changelog
+## Changelog
 
-##### 4.2 (27-10-2023)
-* Updated external_api namespace loading from core_external.
-* No longer backwards compatible.
-
+See [Changelog](CHANGELOG.md) file for details
 
 ## Security
 
-If you discover any security related issues, please email [luuk@MFreak.nl](mailto:luuk@MFreak.nl) instead of using the
+If you discover any security related issues, please email [luuk@ldesignmedia.nl](mailto:luuk@ldesignmedia.nl) instead of using the
 issue tracker.
 
 ## License

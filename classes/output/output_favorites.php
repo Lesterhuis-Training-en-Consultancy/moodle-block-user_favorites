@@ -42,16 +42,17 @@ use templatable;
 class output_favorites implements renderable, templatable {
 
     /**
-     * @var favorites
+     * @var favorites $favorites Favorites
      */
-    protected $favorites;
-    /**
-     * @var string
-     */
-    protected $currenturl;
+    protected favorites $favorites;
 
     /**
-     * admin_catalog_product_output constructor.
+     * @var string $currenturl Current URL
+     */
+    protected string $currenturl;
+
+    /**
+     * Admin catalog product output constructor.
      *
      * @param favorites $favorites
      * @param string $currenturl
@@ -62,8 +63,9 @@ class output_favorites implements renderable, templatable {
     }
 
     /**
-     * Function to export the renderer data in a format that is suitable for a
-     * mustache template. This means:
+     * Function to export the renderer data in a format that is suitable for a mustache template.
+     *
+     * This means:
      * 1. No complex types - only stdClass, array, int, string, float, bool
      * 2. Any additional info that is required for the template is pre-calculated (e.g. capability checks).
      *
@@ -81,13 +83,18 @@ class output_favorites implements renderable, templatable {
             $favorites = $this->favorites->get_all();
             foreach ($favorites as $favorite) {
 
-                if ($this->currenturl == $favorite->url) {
+                $favoriteurls = [
+                    $favorite->url,
+                    $favorite->url . 'index.php',
+                ];
+
+                if (in_array($this->currenturl, $favoriteurls, true)) {
                     $hascurrenturl = true;
                 }
 
                 $data[$favorite->hash] = [
                     'name' => $favorite->title,
-                    'class' => ($this->currenturl == $favorite->url) ? 'active' : '',
+                    'class' => (in_array($this->currenturl, $favoriteurls, true)) ? 'active' : '',
                     'url' => $favorite->url,
                     'hash' => $favorite->hash,
                     'sortorder' => $favorite->sortorder,

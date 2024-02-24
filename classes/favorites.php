@@ -37,9 +37,9 @@ use dml_exception;
 class favorites {
 
     /**
-     * @var int
+     * @var int $userid User id
      */
-    protected $userid;
+    protected int $userid;
 
     /**
      * favorites constructor.
@@ -91,6 +91,7 @@ class favorites {
 
     /**
      * Set an url
+     *
      * This function will update if exists or create a new favorite.
      *
      * @param string $url
@@ -149,10 +150,10 @@ class favorites {
     /**
      * Get_all favorites.
      *
-     * @return array|mixed
+     * @return array
      * @throws dml_exception
      */
-    public function get_all() {
+    public function get_all(): array {
         global $DB;
 
         return $DB->get_records('block_user_favorites', ['userid' => $this->userid], 'sortorder ASC', '*');
