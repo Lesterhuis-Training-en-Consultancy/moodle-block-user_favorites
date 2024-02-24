@@ -14,6 +14,7 @@ input, bug reports and beta testing
 * Supports PHP:  7.4
 
 ![Moodle402](https://img.shields.io/badge/moodle-4.2-brightgreen.svg)
+![Moodle403](https://img.shields.io/badge/moodle-4.3-brightgreen.svg)
 
 ## Screens
 ![10 27 2018-12 40](https://github.com/Lesterhuis-Training-en-Consultancy/moodle-block-user_favorites/assets/995760/2f2c2157-dbfa-4a17-9c5b-cd77ba55070c)
