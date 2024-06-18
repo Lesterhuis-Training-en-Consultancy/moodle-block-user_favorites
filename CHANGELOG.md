@@ -35,6 +35,9 @@ Types of changes
 * **Fixed** for any bug fixes.
 * **Security** in case of vulnerabilities.
 
+## Version (4.4.1) - 2024-06-18
+- Improve styling by SnakyJake https://github.com/Lesterhuis-Training-en-Consultancy/moodle-block-user_favorites/pull/35
+
 ## Version (4.4.0) - 2024-04-05
 - Tested for Moodle (LMS) 4.4 and PHP 8.1
 
