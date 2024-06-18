@@ -30,7 +30,7 @@
 
 .block_user_favorites ol a {
     word-break: break-all;
-    width: calc(100% - 43px);
+    width: calc(100% - 58px);
     display: block;
     float: left;
 }
